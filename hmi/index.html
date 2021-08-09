@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>WMB Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" >
+<meta name="description" content="WMB Architecture & Showcase">
+<meta name="msapplication-tap-highlight" content="no">
+<link href="./main.css" rel="stylesheet">
+
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <div class="app-header header-shadow">
+        <div class="app-header__logo">
+            <div class="logo-src"></div>
+            <div class="header__pane ml-auto">
+                <div>
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
+            <span>
+            </span>
+        </div>    
+        <div class="app-header__content">
+            <div class="app-header-left">
+                
+            </div>
+            <div class="app-header-right">
+                     
+            </div>
+        </div>
+    </div>       
+    <div class="app-main">
+        <div class="app-sidebar sidebar-shadow">
+            <div class="scrollbar-sidebar">
+                <div class="app-sidebar__inner">
+                    <ul class="vertical-nav-menu">
+                        <li class="app-sidebar__heading">控制面板</li>
+                        <li><a href="index.html" class="mm-active"><i class="metismenu-icon pe-7s-albums"></i>默认面板</a></li>
+                        
+
+                        <li class="app-sidebar__heading">技术支持</li>
+                        <li><a href="settings.html"><i class="metismenu-icon pe-7s-settings"></i>设置</a></li>
+                        <li><a href="contact.html"><i class="metismenu-icon pe-7s-users"></i>联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="main-card mb-3 card" style="height:190px">
+                                <div class="card-header" style="text-transform:capitalize">工作单元微服务 - 启停控制</div>
+                                <div class="card-body">
+                                    <button class="btn btn-success">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-play fa-w-20"></i>
+                                        </span>
+                                        启动
+                                    </button>&nbsp;
+                                    <button class="btn btn-warning">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-pause fa-w-20"></i>
+                                        </span>
+                                        暂停
+                                    </button>&nbsp;
+                                    <button class="btn btn-danger">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-stop fa-w-20"></i>
+                                        </span>
+                                        停止
+                                    </button>&nbsp;
+                                    <button class="btn btn-light">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-adjust fa-w-20"></i>
+                                        </span>
+                                        刷新状态
+                                    </button>
+                                </div>
+                                <div class="card-footer">运行状态：
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped bg-dark" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:50%;">当前工作单元</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="main-card mb-3 card">
+                                <div class="card-header" style="text-transform:capitalize">工作单元微服务列表</div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item-primary list-group-item">压缩机人工拧紧及打钉 服务
+                                        <li class="list-group-item-light list-group-item">压缩机人工及机器人混合拧紧 服务
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="main-card mb-3 card text-white bg-dark" style="height: 686px">
+                                <div class="card-header">运行日志</div>
+                                <div class="card-body">
+                                    <div class="scroll-area-lg" style="height: 586px">
+                                        <div class="scrollbar-container ps--active-y">
+                                            Python 2.7.16 (default, Jan 27 2020, 04:46:15)<br>
+                                            [GCC 4.2.1 Compatible Apple LLVM 10.0.1 (clang-1001.0.37.14)] on darwin<br>
+                                            Type "help", "copyright", "credits" or "license" for more information.<br>
+                                            <br>
+                                            [Init] CREEM parser success<br>
+                                            [Init] SPIDR Engine init success<br>
+                                            [Init] Redis init success<br>
+                                            [Init] FastAPI service init success<br>
+                                            <br>
+                                            [Service] npm WARN saveError ENOENT: no such file or directory, open '/Users/wmb/package.json'<br>
+                                            [Service] npm notice created a lockfile as package-lock.json. You should commit this file.<br>
+                                            [Service] npm WARN enoent ENOENT: no such file or directory, open '/Users/wmb/package.json'<br>
+                                            <font class="text-warning">[Warning] Connecting redis message broker timeout</font><br>
+                                            [Service] npm WARN wmb No description<br>
+                                            [Service] npm WARN wmb No repository field.<br>
+                                            [Service] npm WARN wmb No README data<br>
+                                            [Service] npm WARN wmb No license field.<br>
+                                            <br>
+                                            Python 2.7.16 (default, Jan 27 2020, 04:46:15)<br>
+                                            [GCC 4.2.1 Compatible Apple LLVM 10.0.1 (clang-1001.0.37.14)] on darwin<br>
+                                            Type "help", "copyright", "credits" or "license" for more information.<br>
+                                            <br>
+                                            [Init] CREEM parser success<br>
+                                            [Init] SPIDR Engine init success<br>
+                                            [Init] Redis init success<br>
+                                            [Init] FastAPI service init success<br>
+                                            <br>
+                                            [Service] npm WARN saveError ENOENT: no such file or directory, open '/Users/wmb/package.json'<br>
+                                            [Service] npm notice created a lockfile as package-lock.json. You should commit this file.<br>
+                                            [Service] npm WARN enoent ENOENT: no such file or directory, open '/Users/wmb/package.json'<br>
+                                            <font class="text-warning">[Warning] Connecting redis message broker timeout</font><br>
+                                            [Service] npm WARN wmb No description<br>
+                                            [Service] npm WARN wmb No repository field.<br>
+                                            [Service] npm WARN wmb No README data<br>
+                                            [Service] npm WARN wmb No license field.<br>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="main-card mb-3 card">
+                                <div class="card-header" style="text-transform:capitalize">查错重启按钮</div>
+                                <div class="card-body">
+                                    <button class="btn btn-danger">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-arrow-circle-left fa-w-20"></i>
+                                        </span>
+                                        重启消息服务
+                                    </button>&nbsp;
+                                    <button class="btn btn-danger">
+                                        <span class="btn-icon-wrapper pr-2">
+                                            <i class="fa fa-arrow-circle-left fa-w-20"></i>
+                                        </span>
+                                        重启内置驱动
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="main-card mb-3 card text-white bg-danger">
+                                <div class="card-header" style="text-transform:capitalize">急停按钮</div>
+                                <div class="bg-light text-center"><img src="img/emerg-stop.png"width="50%"></div>
+                                <div class="card-footer">警告：非紧急情况下禁止触碰</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aboutModalLabel">About</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="about_ciel.png" width="70%"><br><br>
+                <p class="mb-0">The website and all elements are created by <b>Zhen Hua, Zhou (Ciel)</b> from Siemens T. Any technical questions please feel free to send mail to me (You could click 'Send Email' button in the content menu to send). You can also add my WeChat, but please indicate who you are.</p><br>
+                <img src="wechat.jpg" width="35%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="./assets/scripts/main.js"></script>
+
