@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="System.IO.TriggerButton">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>TriggerButton</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a2651224-a59c-4e0f-849f-8a6f63dc2372</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Trigger Button</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>触发按钮</cm:DisplayName>
+                <cm:Description>触发指定按钮，即置高指定数字量输入引脚</cm:Description>
+                <cm:Input>
+                    <cm:Port id="port" displayName="引脚"/>
+                    <cm:Port id="mode" displayName="模式"/>
+                </cm:Input>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="PushButton">
+                    <cm:DeviceDescription ref="IO.PushButton.Unknown"/>
+                    <cm:DeviceDescription ref="IO.PushButton.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="port" type="String" defaultValue="I0.0"/>
+                    <cm:Port id="mode" type="String"/>
+                </cm:Input>
+                <cm:Output/>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmJ1dHRvbjwvdGl0bGU+CiAgICA8ZyBpZD0iYnV0dG9uIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS4wMDAwMDAsIDkuMDAwMDAwKSIgZmlsbD0iIzAwOTk5OSIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHBhdGggZD0iTTQ3LjUsOTUgQzc0LjA1MTk0MzQsOTUgOTUsODMuOTg4MDI3NiA5NSw3MC4yMDQ0MTk5IEw5NSw2MiBDOTUsNzQuMDg4MDI3NiA3My42MDY0NDUzLDgzLjg3ODQ1MyA0Ny41LDgzLjg3ODQ1MyBDMjEuMzkzNTU0Nyw4My44Nzg0NTMgMCw3NC4wODgwMjc2IDAsNjIgTDAsNzAuMjA0NDE5OSBDMCw4My45ODgwMjc2IDIwLjk0ODA1NjYsOTUgNDcuNSw5NSBaIiBpZD0i6Lev5b6EIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00NS40OTMyNTU2LDIxLjE5NzYzNjQgQzQ2LjAyNDk3NDksMjEuNzEwNzI3MyA0Ni43NjUwMzc0LDIyIDQ3LjUsMjIgQzQ4LjIzNDk2MjYsMjIgNDguOTc1MDI1MSwyMS43MTA3MjczIDQ5LjUwNjc0NDQsMjEuMTk3NjM2NCBMNTUuMTY5OTc5NiwxNS43NDYzNjM2IEM1Ni4yNzY2NzM1LDE0LjY4MTA5MDkgNTYuMjc2NjczNSwxMi45NTUwOTA5IDU1LjE2OTk3OTYsMTEuODg5ODE4MiBDNTQuMDYzMjg1OCwxMC44MjQ1NDU1IDUyLjI3MDE3MzUsMTAuODI0NTQ1NSA1MS4xNjM0Nzk2LDExLjg4OTgxODIgTDUwLjMzMzMxNzYsMTIuNjg4OTA5MSBMNTAuMzMzMzE3NiwyLjcyNzI3MjczIEM1MC4zMzMzMTc2LDEuMjE5ODE4MTggNDkuMDY2MDY5MSwwIDQ3LjUsMCBDNDUuOTMzOTMwOSwwIDQ0LjY2NjY4MjQsMS4yMTk4MTgxOCA0NC42NjY2ODI0LDIuNzI3MjcyNzMgTDQ0LjY2NjY4MjQsMTIuNjg4OTA5MSBMNDMuODM2NTIwNCwxMS44ODk4MTgyIEM0Mi43Mjk4MjY1LDEwLjgyNDU0NTUgNDAuOTM2NzE0MiwxMC44MjQ1NDU1IDM5LjgzMDAyMDQsMTEuODg5ODE4MiBDMzguNzIzMzI2NSwxMi45NTUwOTA5IDM4LjcyMzMyNjUsMTQuNjgxMDkwOSAzOS44MzAwMjA0LDE1Ljc0NjM2MzYgTDQ1LjQ5MzI1NTYsMjEuMTk3NjM2NCBaIiBpZD0i6Lev5b6EIj48L3BhdGg+CiAgICAgICAgICAgIDxlbGxpcHNlIGlkPSLmpK3lnIblvaIiIGN4PSI0OC41IiBjeT0iMzguNSIgcng9IjIyLjUiIHJ5PSIxMC41Ij48L2VsbGlwc2U+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Ny41LDc3IEM3My42MzA5Mzc1LDc3IDk1LDY3LjExMDQwMDkgOTUsNTQuOTEwNjIwOCBDOTUsNDcuNTI5NDU0OCA4Ny4wMzExMzI4LDQxLjAxMTQzMTMgNzUuMTE4MjgxMiwzNyBDNzUuMTc1MDU4NiwzNy40NTE3Mjc4IDc1LjMzMjAzMTIsMzcuODgwMDc3NyA3NS4zMzIwMzEyLDM4LjM0MzU4NjUgTDc1LjMzMjAzMTIsNTQuOTEwNjIwOCBDNzUuMzMyMDMxMiw2NC4zNTYyMjM1IDYzLjM2NzU5NzcsNzEuNDc3NjU1MiA0Ny41LDcxLjQ3NzY1NTIgQzMxLjYzMjQwMjMsNzEuNDc3NjU1MiAxOS42Njc5Njg4LDY0LjM1NjIyMzUgMTkuNjY3OTY4OCw1NC45MTA2MjA4IEwxOS42Njc5Njg4LDM4LjM0MzU4NjUgQzE5LjY2Nzk2ODgsMzcuODgwMDc3NyAxOS44MjQ5NDE0LDM3LjQ1MTcyNzggMTkuODgxNzE4OCwzNyBDNy45Njg4NjcxOSw0MS4wMTE0MzEzIDAsNDcuNTI5NDU0OCAwLDU0LjkxMDYyMDggQzAsNjcuMTEwNDAwOSAyMS4zNjkwNjI1LDc3IDQ3LjUsNzcgWiIgaWQ9Iui3r+W+hCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDguNSw2NyBDNjAuOTMxNDM3NSw2NyA3MSw2Mi4yNzQ4MjUgNzEsNTYuNSBMNzEsNDYgQzcxLDUxLjc3NDgyNSA2MC45MzE0Mzc1LDU2LjUgNDguNSw1Ni41IEMzNi4wNjg1NjI1LDU2LjUgMjYsNTEuNzc0ODI1IDI2LDQ2IEwyNiw1Ni41IEMyNiw2Mi4yNzQ4MjUgMzYuMDY4NTYyNSw2NyA0OC41LDY3IFoiIGlkPSLot6/lvoQiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+
+Sourced: OPC UA 1.04
+Namespace: CREEM.Base.StatusCode
+Contact: zhenhua.zhou@siemens.com
+-->
+<StatusCodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<StatusCode>
+		<Name>Good</Name>
+		<Code>0x00000000</Code>
+		<Description>The operation succeeded.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>Uncertain</Name>
+		<Code>0x40000000</Code>
+		<Description>The operation was uncertain.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>Bad</Name>
+		<Code>0x80000000</Code>
+		<Description>The operation failed.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadUnexpectedError</Name>
+		<Code>0x80010000</Code>
+		<Description>An unexpected error occurred.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInternalError</Name>
+		<Code>0x80020000</Code>
+		<Description>An internal error occurred as a result of a programming or configuration error.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOutOfMemory</Name>
+		<Code>0x80030000</Code>
+		<Description>Not enough memory to complete the operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadResourceUnavailable</Name>
+		<Code>0x80040000</Code>
+		<Description>An operating system resource is not available.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCommunicationError</Name>
+		<Code>0x80050000</Code>
+		<Description>A low level communication error occurred.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEncodingError</Name>
+		<Code>0x80060000</Code>
+		<Description>Encoding halted because of invalid data in the objects being serialized.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDecodingError</Name>
+		<Code>0x80070000</Code>
+		<Description>Decoding halted because of invalid data in the stream.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEncodingLimitsExceeded</Name>
+		<Code>0x80080000</Code>
+		<Description>The message encoding/decoding limits imposed by the stack have been exceeded.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestTooLarge</Name>
+		<Code>0x80B80000</Code>
+		<Description>The request message size exceeds limits set by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadResponseTooLarge</Name>
+		<Code>0x80B90000</Code>
+		<Description>The response message size exceeds limits set by the client.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadUnknownResponse</Name>
+		<Code>0x80090000</Code>
+		<Description>An unrecognized response was received from the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTimeout</Name>
+		<Code>0x800A0000</Code>
+		<Description>The operation timed out.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServiceUnsupported</Name>
+		<Code>0x800B0000</Code>
+		<Description>The server does not support the requested service.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadShutdown</Name>
+		<Code>0x800C0000</Code>
+		<Description>The operation was cancelled because the application is shutting down.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServerNotConnected</Name>
+		<Code>0x800D0000</Code>
+		<Description>The operation could not complete because the client is not connected to the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServerHalted</Name>
+		<Code>0x800E0000</Code>
+		<Description>The server has stopped and cannot process any requests.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNothingToDo</Name>
+		<Code>0x800F0000</Code>
+		<Description>There was nothing to do because the client passed a list of operations with no elements.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManyOperations</Name>
+		<Code>0x80100000</Code>
+		<Description>The request could not be processed because it specified too many operations.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManyMonitoredItems</Name>
+		<Code>0x80DB0000</Code>
+		<Description>The request could not be processed because there are too many monitored items in the subscription.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDataTypeIdUnknown</Name>
+		<Code>0x80110000</Code>
+		<Description>The extension object cannot be (de)serialized because the data type id is not recognized.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateInvalid</Name>
+		<Code>0x80120000</Code>
+		<Description>The certificate provided as a parameter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecurityChecksFailed</Name>
+		<Code>0x80130000</Code>
+		<Description>An error occurred verifying security.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificatePolicyCheckFailed</Name>
+		<Code>0x81140000</Code>
+		<Description>The certificate does not meet the requirements of the security policy.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateTimeInvalid</Name>
+		<Code>0x80140000</Code>
+		<Description>The certificate has expired or is not yet valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateIssuerTimeInvalid</Name>
+		<Code>0x80150000</Code>
+		<Description>An issuer certificate has expired or is not yet valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateHostNameInvalid</Name>
+		<Code>0x80160000</Code>
+		<Description>The HostName used to connect to a server does not match a HostName in the certificate.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateUriInvalid</Name>
+		<Code>0x80170000</Code>
+		<Description>The URI specified in the ApplicationDescription does not match the URI in the certificate.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateUseNotAllowed</Name>
+		<Code>0x80180000</Code>
+		<Description>The certificate may not be used for the requested operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateIssuerUseNotAllowed</Name>
+		<Code>0x80190000</Code>
+		<Description>The issuer certificate may not be used for the requested operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateUntrusted</Name>
+		<Code>0x801A0000</Code>
+		<Description>The certificate is not trusted.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateRevocationUnknown</Name>
+		<Code>0x801B0000</Code>
+		<Description>It was not possible to determine if the certificate has been revoked.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateIssuerRevocationUnknown</Name>
+		<Code>0x801C0000</Code>
+		<Description>It was not possible to determine if the issuer certificate has been revoked.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateRevoked</Name>
+		<Code>0x801D0000</Code>
+		<Description>The certificate has been revoked.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateIssuerRevoked</Name>
+		<Code>0x801E0000</Code>
+		<Description>The issuer certificate has been revoked.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadCertificateChainIncomplete</Name>
+		<Code>0x810D0000</Code>
+		<Description>The certificate chain is incomplete.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadUserAccessDenied</Name>
+		<Code>0x801F0000</Code>
+		<Description>User does not have permission to perform the requested operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadIdentityTokenInvalid</Name>
+		<Code>0x80200000</Code>
+		<Description>The user identity token is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadIdentityTokenRejected</Name>
+		<Code>0x80210000</Code>
+		<Description>The user identity token is valid but the server has rejected it.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecureChannelIdInvalid</Name>
+		<Code>0x80220000</Code>
+		<Description>The specified secure channel is no longer valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInvalidTimestamp</Name>
+		<Code>0x80230000</Code>
+		<Description>The timestamp is outside the range allowed by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNonceInvalid</Name>
+		<Code>0x80240000</Code>
+		<Description>The nonce does appear to be not a random value or it is not the correct length.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSessionIdInvalid</Name>
+		<Code>0x80250000</Code>
+		<Description>The session id is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSessionClosed</Name>
+		<Code>0x80260000</Code>
+		<Description>The session was closed by the client.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSessionNotActivated</Name>
+		<Code>0x80270000</Code>
+		<Description>The session cannot be used because ActivateSession has not been called.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSubscriptionIdInvalid</Name>
+		<Code>0x80280000</Code>
+		<Description>The subscription id is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestHeaderInvalid</Name>
+		<Code>0x802A0000</Code>
+		<Description>The header for the request is missing or invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTimestampsToReturnInvalid</Name>
+		<Code>0x802B0000</Code>
+		<Description>The timestamps to return parameter is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestCancelledByClient</Name>
+		<Code>0x802C0000</Code>
+		<Description>The request was cancelled by the client.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManyArguments</Name>
+		<Code>0x80E50000</Code>
+		<Description>Too many arguments were provided.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadLicenseExpired</Name>
+		<Code>0x810E0000</Code>
+		<Description>The server requires a license to operate in general or to perform a service or operation, but existing license is expired.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadLicenseLimitsExceeded</Name>
+		<Code>0x810F0000</Code>
+		<Description>The server has limits on number of allowed operations / objects, based on installed licenses, and these limits where exceeded.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadLicenseNotAvailable</Name>
+		<Code>0x81100000</Code>
+		<Description>The server does not have a license which is required to operate in general or to perform a service or operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodSubscriptionTransferred</Name>
+		<Code>0x002D0000</Code>
+		<Description>The subscription was transferred to another session.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodCompletesAsynchronously</Name>
+		<Code>0x002E0000</Code>
+		<Description>The processing will complete asynchronously.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodOverload</Name>
+		<Code>0x002F0000</Code>
+		<Description>Sampling has slowed down due to resource limitations.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodClamped</Name>
+		<Code>0x00300000</Code>
+		<Description>The value written was accepted but was clamped.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoCommunication</Name>
+		<Code>0x80310000</Code>
+		<Description>Communication with the data source is defined, but not established, and there is no last known value available.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadWaitingForInitialData</Name>
+		<Code>0x80320000</Code>
+		<Description>Waiting for the server to obtain values from the underlying data source.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeIdInvalid</Name>
+		<Code>0x80330000</Code>
+		<Description>The syntax of the node id is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeIdUnknown</Name>
+		<Code>0x80340000</Code>
+		<Description>The node id refers to a node that does not exist in the server address space.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAttributeIdInvalid</Name>
+		<Code>0x80350000</Code>
+		<Description>The attribute is not supported for the specified Node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadIndexRangeInvalid</Name>
+		<Code>0x80360000</Code>
+		<Description>The syntax of the index range parameter is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadIndexRangeNoData</Name>
+		<Code>0x80370000</Code>
+		<Description>No data exists within the range of indexes specified.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDataEncodingInvalid</Name>
+		<Code>0x80380000</Code>
+		<Description>The data encoding is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDataEncodingUnsupported</Name>
+		<Code>0x80390000</Code>
+		<Description>The server does not support the requested data encoding for the node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotReadable</Name>
+		<Code>0x803A0000</Code>
+		<Description>The access level does not allow reading or subscribing to the Node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotWritable</Name>
+		<Code>0x803B0000</Code>
+		<Description>The access level does not allow writing to the Node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOutOfRange</Name>
+		<Code>0x803C0000</Code>
+		<Description>The value was out of range.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotSupported</Name>
+		<Code>0x803D0000</Code>
+		<Description>The requested operation is not supported.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotFound</Name>
+		<Code>0x803E0000</Code>
+		<Description>A requested item was not found or a search operation ended without success.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadObjectDeleted</Name>
+		<Code>0x803F0000</Code>
+		<Description>The object cannot be used because it has been deleted.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotImplemented</Name>
+		<Code>0x80400000</Code>
+		<Description>Requested operation is not implemented.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMonitoringModeInvalid</Name>
+		<Code>0x80410000</Code>
+		<Description>The monitoring mode is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMonitoredItemIdInvalid</Name>
+		<Code>0x80420000</Code>
+		<Description>The monitoring item id does not refer to a valid monitored item.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMonitoredItemFilterInvalid</Name>
+		<Code>0x80430000</Code>
+		<Description>The monitored item filter parameter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMonitoredItemFilterUnsupported</Name>
+		<Code>0x80440000</Code>
+		<Description>The server does not support the requested monitored item filter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterNotAllowed</Name>
+		<Code>0x80450000</Code>
+		<Description>A monitoring filter cannot be used in combination with the attribute specified.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadStructureMissing</Name>
+		<Code>0x80460000</Code>
+		<Description>A mandatory structured parameter was missing or null.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEventFilterInvalid</Name>
+		<Code>0x80470000</Code>
+		<Description>The event filter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadContentFilterInvalid</Name>
+		<Code>0x80480000</Code>
+		<Description>The content filter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterOperatorInvalid</Name>
+		<Code>0x80C10000</Code>
+		<Description>An unrecognized operator was provided in a filter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterOperatorUnsupported</Name>
+		<Code>0x80C20000</Code>
+		<Description>A valid operator was provided, but the server does not provide support for this filter operator.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterOperandCountMismatch</Name>
+		<Code>0x80C30000</Code>
+		<Description>The number of operands provided for the filter operator was less then expected for the operand provided.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterOperandInvalid</Name>
+		<Code>0x80490000</Code>
+		<Description>The operand used in a content filter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterElementInvalid</Name>
+		<Code>0x80C40000</Code>
+		<Description>The referenced element is not a valid element in the content filter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadFilterLiteralInvalid</Name>
+		<Code>0x80C50000</Code>
+		<Description>The referenced literal is not a valid value.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadContinuationPointInvalid</Name>
+		<Code>0x804A0000</Code>
+		<Description>The continuation point provide is longer valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoContinuationPoints</Name>
+		<Code>0x804B0000</Code>
+		<Description>The operation could not be processed because all continuation points have been allocated.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadReferenceTypeIdInvalid</Name>
+		<Code>0x804C0000</Code>
+		<Description>The reference type id does not refer to a valid reference type node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadBrowseDirectionInvalid</Name>
+		<Code>0x804D0000</Code>
+		<Description>The browse direction is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeNotInView</Name>
+		<Code>0x804E0000</Code>
+		<Description>The node is not part of the view.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNumericOverflow</Name>
+		<Code>0x81120000</Code>
+		<Description>The number was not accepted because of a numeric overflow.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServerUriInvalid</Name>
+		<Code>0x804F0000</Code>
+		<Description>The ServerUri is not a valid URI.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServerNameMissing</Name>
+		<Code>0x80500000</Code>
+		<Description>No ServerName was specified.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDiscoveryUrlMissing</Name>
+		<Code>0x80510000</Code>
+		<Description>No DiscoveryUrl was specified.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSempahoreFileMissing</Name>
+		<Code>0x80520000</Code>
+		<Description>The semaphore file specified by the client is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestTypeInvalid</Name>
+		<Code>0x80530000</Code>
+		<Description>The security token request type is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecurityModeRejected</Name>
+		<Code>0x80540000</Code>
+		<Description>The security mode does not meet the requirements set by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecurityPolicyRejected</Name>
+		<Code>0x80550000</Code>
+		<Description>The security policy does not meet the requirements set by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManySessions</Name>
+		<Code>0x80560000</Code>
+		<Description>The server has reached its maximum number of sessions.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadUserSignatureInvalid</Name>
+		<Code>0x80570000</Code>
+		<Description>The user token signature is missing or invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadApplicationSignatureInvalid</Name>
+		<Code>0x80580000</Code>
+		<Description>The signature generated with the client certificate is missing or invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoValidCertificates</Name>
+		<Code>0x80590000</Code>
+		<Description>The client did not provide at least one software certificate that is valid and meets the profile requirements for the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadIdentityChangeNotSupported</Name>
+		<Code>0x80C60000</Code>
+		<Description>The server does not support changing the user identity assigned to the session.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestCancelledByRequest</Name>
+		<Code>0x805A0000</Code>
+		<Description>The request was cancelled by the client with the Cancel service.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadParentNodeIdInvalid</Name>
+		<Code>0x805B0000</Code>
+		<Description>The parent node id does not to refer to a valid node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadReferenceNotAllowed</Name>
+		<Code>0x805C0000</Code>
+		<Description>The reference could not be created because it violates constraints imposed by the data model.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeIdRejected</Name>
+		<Code>0x805D0000</Code>
+		<Description>The requested node id was reject because it was either invalid or server does not allow node ids to be specified by the client.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeIdExists</Name>
+		<Code>0x805E0000</Code>
+		<Description>The requested node id is already used by another node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeClassInvalid</Name>
+		<Code>0x805F0000</Code>
+		<Description>The node class is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadBrowseNameInvalid</Name>
+		<Code>0x80600000</Code>
+		<Description>The browse name is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadBrowseNameDuplicated</Name>
+		<Code>0x80610000</Code>
+		<Description>The browse name is not unique among nodes that share the same relationship with the parent.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNodeAttributesInvalid</Name>
+		<Code>0x80620000</Code>
+		<Description>The node attributes are not valid for the node class.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTypeDefinitionInvalid</Name>
+		<Code>0x80630000</Code>
+		<Description>The type definition node id does not reference an appropriate type node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSourceNodeIdInvalid</Name>
+		<Code>0x80640000</Code>
+		<Description>The source node id does not reference a valid node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTargetNodeIdInvalid</Name>
+		<Code>0x80650000</Code>
+		<Description>The target node id does not reference a valid node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDuplicateReferenceNotAllowed</Name>
+		<Code>0x80660000</Code>
+		<Description>The reference type between the nodes is already defined.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInvalidSelfReference</Name>
+		<Code>0x80670000</Code>
+		<Description>The server does not allow this type of self reference on this node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadReferenceLocalOnly</Name>
+		<Code>0x80680000</Code>
+		<Description>The reference type is not valid for a reference to a remote server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoDeleteRights</Name>
+		<Code>0x80690000</Code>
+		<Description>The server will not allow the node to be deleted.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainReferenceNotDeleted</Name>
+		<Code>0x40BC0000</Code>
+		<Description>The server was not able to delete all target references.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadServerIndexInvalid</Name>
+		<Code>0x806A0000</Code>
+		<Description>The server index is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadViewIdUnknown</Name>
+		<Code>0x806B0000</Code>
+		<Description>The view id does not refer to a valid view node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadViewTimestampInvalid</Name>
+		<Code>0x80C90000</Code>
+		<Description>The view timestamp is not available or not supported.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadViewParameterMismatch</Name>
+		<Code>0x80CA0000</Code>
+		<Description>The view parameters are not consistent with each other.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadViewVersionInvalid</Name>
+		<Code>0x80CB0000</Code>
+		<Description>The view version is not available or not supported.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainNotAllNodesAvailable</Name>
+		<Code>0x40C00000</Code>
+		<Description>The list of references may not be complete because the underlying system is not available.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodResultsMayBeIncomplete</Name>
+		<Code>0x00BA0000</Code>
+		<Description>The server should have followed a reference to a node in a remote server but did not. The result set may be incomplete.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotTypeDefinition</Name>
+		<Code>0x80C80000</Code>
+		<Description>The provided Nodeid was not a type definition nodeid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainReferenceOutOfServer</Name>
+		<Code>0x406C0000</Code>
+		<Description>One of the references to follow in the relative path references to a node in the address space in another server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManyMatches</Name>
+		<Code>0x806D0000</Code>
+		<Description>The requested operation has too many matches to return.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadQueryTooComplex</Name>
+		<Code>0x806E0000</Code>
+		<Description>The requested operation requires too many resources in the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoMatch</Name>
+		<Code>0x806F0000</Code>
+		<Description>The requested operation has no match to return.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMaxAgeInvalid</Name>
+		<Code>0x80700000</Code>
+		<Description>The max age parameter is invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecurityModeInsufficient</Name>
+		<Code>0x80E60000</Code>
+		<Description>The operation is not permitted over the current secure channel.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadHistoryOperationInvalid</Name>
+		<Code>0x80710000</Code>
+		<Description>The history details parameter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadHistoryOperationUnsupported</Name>
+		<Code>0x80720000</Code>
+		<Description>The server does not support the requested operation.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInvalidTimestampArgument</Name>
+		<Code>0x80BD0000</Code>
+		<Description>The defined timestamp to return was invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadWriteNotSupported</Name>
+		<Code>0x80730000</Code>
+		<Description>The server does not support writing the combination of value, status and timestamps provided.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTypeMismatch</Name>
+		<Code>0x80740000</Code>
+		<Description>The value supplied for the attribute is not of the same type as the attribute's value.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMethodInvalid</Name>
+		<Code>0x80750000</Code>
+		<Description>The method id does not refer to a method for the specified object.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadArgumentsMissing</Name>
+		<Code>0x80760000</Code>
+		<Description>The client did not specify all of the input arguments for the method.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotExecutable</Name>
+		<Code>0x81110000</Code>
+		<Description>The executable attribute does not allow the execution of the method.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManySubscriptions</Name>
+		<Code>0x80770000</Code>
+		<Description>The server has reached its maximum number of subscriptions.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTooManyPublishRequests</Name>
+		<Code>0x80780000</Code>
+		<Description>The server has reached the maximum number of queued publish requests.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoSubscription</Name>
+		<Code>0x80790000</Code>
+		<Description>There is no subscription available for this session.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSequenceNumberUnknown</Name>
+		<Code>0x807A0000</Code>
+		<Description>The sequence number is unknown to the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodRetransmissionQueueNotSupported</Name>
+		<Code>0x00DF0000</Code>
+		<Description>The Server does not support retransmission queue and acknowledgement of sequence numbers is not available.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMessageNotAvailable</Name>
+		<Code>0x807B0000</Code>
+		<Description>The requested notification message is no longer available.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInsufficientClientProfile</Name>
+		<Code>0x807C0000</Code>
+		<Description>The client of the current session does not support one or more Profiles that are necessary for the subscription.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadStateNotActive</Name>
+		<Code>0x80BF0000</Code>
+		<Description>The sub-state machine is not currently active.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAlreadyExists</Name>
+		<Code>0x81150000</Code>
+		<Description>An equivalent rule already exists.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpServerTooBusy</Name>
+		<Code>0x807D0000</Code>
+		<Description>The server cannot process the request because it is too busy.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpMessageTypeInvalid</Name>
+		<Code>0x807E0000</Code>
+		<Description>The type of the message specified in the header invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpSecureChannelUnknown</Name>
+		<Code>0x807F0000</Code>
+		<Description>The SecureChannelId and/or TokenId are not currently in use.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpMessageTooLarge</Name>
+		<Code>0x80800000</Code>
+		<Description>The size of the message chunk specified in the header is too large.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpNotEnoughResources</Name>
+		<Code>0x80810000</Code>
+		<Description>There are not enough resources to process the request.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpInternalError</Name>
+		<Code>0x80820000</Code>
+		<Description>An internal error occurred.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTcpEndpointUrlInvalid</Name>
+		<Code>0x80830000</Code>
+		<Description>The server does not recognize the QueryString specified.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestInterrupted</Name>
+		<Code>0x80840000</Code>
+		<Description>The request could not be sent because of a network interruption.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestTimeout</Name>
+		<Code>0x80850000</Code>
+		<Description>Timeout occurred while processing the request.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecureChannelClosed</Name>
+		<Code>0x80860000</Code>
+		<Description>The secure channel has been closed.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSecureChannelTokenUnknown</Name>
+		<Code>0x80870000</Code>
+		<Description>The token has expired or is not recognized.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSequenceNumberInvalid</Name>
+		<Code>0x80880000</Code>
+		<Description>The sequence number is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadProtocolVersionUnsupported</Name>
+		<Code>0x80BE0000</Code>
+		<Description>The applications do not have compatible protocol versions.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConfigurationError</Name>
+		<Code>0x80890000</Code>
+		<Description>There is a problem with the configuration that affects the usefulness of the value.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNotConnected</Name>
+		<Code>0x808A0000</Code>
+		<Description>The variable should receive its value from another variable, but has never been configured to do so.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDeviceFailure</Name>
+		<Code>0x808B0000</Code>
+		<Description>There has been a failure in the device/data source that generates the value that has affected the value.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSensorFailure</Name>
+		<Code>0x808C0000</Code>
+		<Description>There has been a failure in the sensor from which the value is derived by the device/data source.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOutOfService</Name>
+		<Code>0x808D0000</Code>
+		<Description>The source of the data is not operational.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDeadbandFilterInvalid</Name>
+		<Code>0x808E0000</Code>
+		<Description>The deadband filter is not valid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainNoCommunicationLastUsableValue</Name>
+		<Code>0x408F0000</Code>
+		<Description>Communication to the data source has failed. The variable value is the last value that had a good quality.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainLastUsableValue</Name>
+		<Code>0x40900000</Code>
+		<Description>Whatever was updating this value has stopped doing so.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainSubstituteValue</Name>
+		<Code>0x40910000</Code>
+		<Description>The value is an operational value that was manually overwritten.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainInitialValue</Name>
+		<Code>0x40920000</Code>
+		<Description>The value is an initial value for a variable that normally receives its value from another variable.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainSensorNotAccurate</Name>
+		<Code>0x40930000</Code>
+		<Description>The value is at one of the sensor limits.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainEngineeringUnitsExceeded</Name>
+		<Code>0x40940000</Code>
+		<Description>The value is outside of the range of values defined for this parameter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainSubNormal</Name>
+		<Code>0x40950000</Code>
+		<Description>The value is derived from multiple sources and has less than the required number of Good sources.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodLocalOverride</Name>
+		<Code>0x00960000</Code>
+		<Description>The value has been overridden.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRefreshInProgress</Name>
+		<Code>0x80970000</Code>
+		<Description>This Condition refresh failed, a Condition refresh operation is already in progress.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionAlreadyDisabled</Name>
+		<Code>0x80980000</Code>
+		<Description>This condition has already been disabled.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionAlreadyEnabled</Name>
+		<Code>0x80CC0000</Code>
+		<Description>This condition has already been enabled.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionDisabled</Name>
+		<Code>0x80990000</Code>
+		<Description>Property not available, this condition is disabled.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEventIdUnknown</Name>
+		<Code>0x809A0000</Code>
+		<Description>The specified event id is not recognized.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEventNotAcknowledgeable</Name>
+		<Code>0x80BB0000</Code>
+		<Description>The event cannot be acknowledged.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDialogNotActive</Name>
+		<Code>0x80CD0000</Code>
+		<Description>The dialog condition is not active.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDialogResponseInvalid</Name>
+		<Code>0x80CE0000</Code>
+		<Description>The response is not valid for the dialog.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionBranchAlreadyAcked</Name>
+		<Code>0x80CF0000</Code>
+		<Description>The condition branch has already been acknowledged.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionBranchAlreadyConfirmed</Name>
+		<Code>0x80D00000</Code>
+		<Description>The condition branch has already been confirmed.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionAlreadyShelved</Name>
+		<Code>0x80D10000</Code>
+		<Description>The condition has already been shelved.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConditionNotShelved</Name>
+		<Code>0x80D20000</Code>
+		<Description>The condition is not currently shelved.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadShelvingTimeOutOfRange</Name>
+		<Code>0x80D30000</Code>
+		<Description>The shelving time not within an acceptable range.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoData</Name>
+		<Code>0x809B0000</Code>
+		<Description>No data exists for the requested time range or event filter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadBoundNotFound</Name>
+		<Code>0x80D70000</Code>
+		<Description>No data found to provide upper or lower bound value.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadBoundNotSupported</Name>
+		<Code>0x80D80000</Code>
+		<Description>The server cannot retrieve a bound for the variable.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDataLost</Name>
+		<Code>0x809D0000</Code>
+		<Description>Data is missing due to collection started/stopped/lost.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDataUnavailable</Name>
+		<Code>0x809E0000</Code>
+		<Description>Expected data is unavailable for the requested time range due to an un-mounted volume, an off-line archive or tape, or similar reason for temporary unavailability.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEntryExists</Name>
+		<Code>0x809F0000</Code>
+		<Description>The data or event was not successfully inserted because a matching entry exists.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoEntryExists</Name>
+		<Code>0x80A00000</Code>
+		<Description>The data or event was not successfully updated because no matching entry exists.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTimestampNotSupported</Name>
+		<Code>0x80A10000</Code>
+		<Description>The client requested history using a timestamp format the server does not support (i.e requested ServerTimestamp when server only supports SourceTimestamp).</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEntryInserted</Name>
+		<Code>0x00A20000</Code>
+		<Description>The data or event was successfully inserted into the historical database.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEntryReplaced</Name>
+		<Code>0x00A30000</Code>
+		<Description>The data or event field was successfully replaced in the historical database.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainDataSubNormal</Name>
+		<Code>0x40A40000</Code>
+		<Description>The value is derived from multiple values and has less than the required number of Good values.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodNoData</Name>
+		<Code>0x00A50000</Code>
+		<Description>No data exists for the requested time range or event filter.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodMoreData</Name>
+		<Code>0x00A60000</Code>
+		<Description>The data or event field was successfully replaced in the historical database.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAggregateListMismatch</Name>
+		<Code>0x80D40000</Code>
+		<Description>The requested number of Aggregates does not match the requested number of NodeIds.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAggregateNotSupported</Name>
+		<Code>0x80D50000</Code>
+		<Description>The requested Aggregate is not support by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAggregateInvalidInputs</Name>
+		<Code>0x80D60000</Code>
+		<Description>The aggregate value could not be derived due to invalid data inputs.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadAggregateConfigurationRejected</Name>
+		<Code>0x80DA0000</Code>
+		<Description>The aggregate configuration is not valid for specified node.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodDataIgnored</Name>
+		<Code>0x00D90000</Code>
+		<Description>The request specifies fields which are not valid for the EventType or cannot be saved by the historian.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestNotAllowed</Name>
+		<Code>0x80E40000</Code>
+		<Description>The request was rejected by the server because it did not meet the criteria set by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadRequestNotComplete</Name>
+		<Code>0x81130000</Code>
+		<Description>The request has not been processed by the server yet.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTicketRequired</Name>
+		<Code>0x811F0000</Code>
+		<Description>The device identity needs a ticket before it can be accepted.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadTicketInvalid</Name>
+		<Code>0x81200000</Code>
+		<Description>The device identity needs a ticket before it can be accepted.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEdited</Name>
+		<Code>0x00DC0000</Code>
+		<Description>The value does not come from the real source and has been edited by the server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodPostActionFailed</Name>
+		<Code>0x00DD0000</Code>
+		<Description>There was an error in execution of these post-actions.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainDominantValueChanged</Name>
+		<Code>0x40DE0000</Code>
+		<Description>The related EngineeringUnit has been changed but the Variable Value is still provided based on the previous unit.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodDependentValueChanged</Name>
+		<Code>0x00E00000</Code>
+		<Description>A dependent value has been changed but the change has not been applied to the device.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDominantValueChanged</Name>
+		<Code>0x80E10000</Code>
+		<Description>The related EngineeringUnit has been changed but this change has not been applied to the device. The Variable Value is still dependent on the previous unit but its status is currently Bad.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>UncertainDependentValueChanged</Name>
+		<Code>0x40E20000</Code>
+		<Description>A dependent value has been changed but the change has not been applied to the device. The quality of the dominant variable is uncertain.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDependentValueChanged</Name>
+		<Code>0x80E30000</Code>
+		<Description>A dependent value has been changed but the change has not been applied to the device. The quality of the dominant variable is Bad.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEdited_DependentValueChanged</Name>
+		<Code>0x01160000</Code>
+		<Description>It is delivered with a dominant Variable value when a dependent Variable has changed but the change has not been applied.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEdited_DominantValueChanged</Name>
+		<Code>0x01170000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant Variable has changed but the change has not been applied.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodEdited_DominantValueChanged_DependentValueChanged</Name>
+		<Code>0x01180000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant or dependent Variable has changed but change has not been applied.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEdited_OutOfRange</Name>
+		<Code>0x81190000</Code>
+		<Description>It is delivered with a Variable value when Variable has changed but the value is not legal.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInitialValue_OutOfRange</Name>
+		<Code>0x811A0000</Code>
+		<Description>It is delivered with a Variable value when a source Variable has changed but the value is not legal.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOutOfRange_DominantValueChanged</Name>
+		<Code>0x811B0000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant Variable has changed and the value is not legal.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEdited_OutOfRange_DominantValueChanged</Name>
+		<Code>0x811C0000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant Variable has changed, the value is not legal and the change has not been applied.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOutOfRange_DominantValueChanged_DependentValueChanged</Name>
+		<Code>0x811D0000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant or dependent Variable has changed and the value is not legal.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEdited_OutOfRange_DominantValueChanged_DependentValueChanged</Name>
+		<Code>0x811E0000</Code>
+		<Description>It is delivered with a dependent Variable value when a dominant or dependent Variable has changed, the value is not legal and the change has not been applied.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodCommunicationEvent</Name>
+		<Code>0x00A70000</Code>
+		<Description>The communication layer has raised an event.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodShutdownEvent</Name>
+		<Code>0x00A80000</Code>
+		<Description>The system is shutting down.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodCallAgain</Name>
+		<Code>0x00A90000</Code>
+		<Description>The operation is not finished and needs to be called again.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>GoodNonCriticalTimeout</Name>
+		<Code>0x00AA0000</Code>
+		<Description>A non-critical timeout occurred.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInvalidArgument</Name>
+		<Code>0x80AB0000</Code>
+		<Description>One or more arguments are invalid.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConnectionRejected</Name>
+		<Code>0x80AC0000</Code>
+		<Description>Could not establish a network connection to remote server.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadDisconnect</Name>
+		<Code>0x80AD0000</Code>
+		<Description>The server has disconnected from the client.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadConnectionClosed</Name>
+		<Code>0x80AE0000</Code>
+		<Description>The network connection has been closed.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadInvalidState</Name>
+		<Code>0x80AF0000</Code>
+		<Description>The operation cannot be completed because the object is closed, uninitialized or in some other invalid state.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadEndOfStream</Name>
+		<Code>0x80B00000</Code>
+		<Description>Cannot move beyond end of the stream.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadNoDataAvailable</Name>
+		<Code>0x80B10000</Code>
+		<Description>No data is currently available for reading from a non-blocking stream.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadWaitingForResponse</Name>
+		<Code>0x80B20000</Code>
+		<Description>The asynchronous operation is waiting for a response.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadOperationAbandoned</Name>
+		<Code>0x80B30000</Code>
+		<Description>The asynchronous operation was abandoned by the caller.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadExpectedStreamToBlock</Name>
+		<Code>0x80B40000</Code>
+		<Description>The stream did not return all data requested (possibly because it is a non-blocking stream).</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadWouldBlock</Name>
+		<Code>0x80B50000</Code>
+		<Description>Non blocking behaviour is required and the operation would block.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadSyntaxError</Name>
+		<Code>0x80B60000</Code>
+		<Description>A value had an invalid syntax.</Description>
+	</StatusCode>
+	<StatusCode>
+		<Name>BadMaxConnectionsReached</Name>
+		<Code>0x80B70000</Code>
+		<Description>The operation could not be finished because all available connections are in use.</Description>
+	</StatusCode>
+</StatusCodes>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.RoboticInstruction.Robotic.ReadDO">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>ReadDO</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Read DO</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>读取数字量输出</cm:DisplayName>
+                <cm:Description/>
+                <cm:Input>
+                    <cm:Port id="port" displayName="端口"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="value" displayName="值"/>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="Cobot">
+                    <cm:DeviceDescription ref="Robotic.Cobot.Unknown"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5E"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.AUBO.*"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.Denso.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="port" type="String" defaultValue="0.0"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="value" type="Byte"/>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPnJvYm90LWlvPC90aXRsZT4KICAgIDxnIGlkPSJyb2JvdC1pbyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Iue8lue7hCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQuMDAwMDAwLCAxNi4wMDAwMDApIj4KICAgICAgICAgICAgPHBhdGggZD0iTTUsMjEgTDcuNTEzMjA5NDIsNDYuODExMTY1MSBDNy42OTIwNzMzMiw0OC4zOTYyNzgzIDkuNDg4MzA2Myw0OC4zOTYyNzgzIDkuNDg4MzA2Myw0Ni44MTExNjUxIEwxMiwyMSBMNSwyMSBaIiBpZD0iRmlsbC0xIiBmaWxsPSIjQUFFNkY1Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04NCwxNi41NTE5MjMxIEM4NCwxOC40ODMzMTAzIDgyLjg0OTk3NDUsMjAgODEuMzg3NTE0NiwyMCBMNzUuOTM3NTAxNiwyMCBDNzQuNzg3NDc2MSwxMi45NjUyMzAxIDY5LjU4MTcwODIsNy41IDYzLjkzNzUwMzMsNy41IEM1OC4yOTUwNjY4LDcuNSA1My4wODY2NTM3LDEyLjk2NTIzMDEgNTEuOTM3NTA1MSwyMCBMMzUuNjEyNSwyMCBDMzQuMTUwMDI1NSwyMCAzMywxOC40ODMzMTAzIDMzLDE2LjU1MTkyMzEgTDMzLDMuNDQ4MDc2OTQgQzMzLDEuNTE2NjcyNzQgMzQuMTUwMDI1NSwwIDM1LjYxMjUsMCBMODEuMzg3NTE0NiwwIEM4Mi44NDk5NzQ1LDAgODQsMS41MTY2NzI3NCA4NCwzLjQ0ODA3Njk0IEw4NCwxNi41NTE5MjMxIFoiIGlkPSJGaWxsLTMiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNyBDMCwxMC4yNjA1MDUgMi41MTAxOTAwNywxMyA1LjUsMTMgTDMzLDEzIEwzMywxIEw1LjUsMSBDMi4zOTEwNDE3NiwxIDAsMy43Mzk0OTUwMSAwLDciIGlkPSJGaWxsLTQiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTcyLDgxIEwxNCw4MSBMMTQsNzYuMDE3NDkzOSBDMTQsNzMuNzY3MTUzOCAxNS4zNTY5MDg1LDcyIDE3LjA4NTg3MzcsNzIgTDY4LjkxNTE3OCw3MiBDNzAuNjQzMDkxNSw3MiA3Miw3My43NjcxNTM4IDcyLDc2LjAxNzQ5MzkgTDcyLDgxIFoiIGlkPSJGaWxsLTUiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTIyLjY4NjE3MzUsNjUuMDYxMDE3MiBMMjAsNzQgTDYxLDc0IEw1OC40MzAyMjA2LDY1LjA2MTAxNzIgQzU3Ljg0NzIyMSw2My4yMjQ0MDA4IDU2LjMyODA0NTMsNjIgNTQuNDU4NjczNCw2MiBMMjYuNjU3NzM2LDYyIEMyNC43ODkzNDc0LDYyIDIzLjE1Mzc2MjIsNjMuMjI0NDAwOCAyMi42ODYxNzM1LDY1LjA2MTAxNzIiIGlkPSJGaWxsLTYiIGZpbGw9IiNBQUU2RjUiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTUzLjA1MDI0NDgsNjMgTDMzLDYzIEw1Mi44MjMxODYsMjEgQzU0LjUzMTg3OCwyNi4wMjE2NzMzIDU5LjMxNjQyMzEsMjkuNjczNzI4NyA2NS4wMTIwODI2LDI5LjY3MzcyODcgQzY2LjM3OTIyOTEsMjkuNjczNzI4NyA2Ny43NDYzNzU2LDI5LjQ0NjI2NiA2OSwyOC45ODkzOTE3IEw1My4wNTAyNDQ4LDYzIFoiIGlkPSJGaWxsLTciIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTEzLDE2IEwxLDE2IEwxLDMxLjg5MzczNzYgQzEsMzQuMTQ1NDI1NiAzLjY2NzAyNTUyLDM2IDYuOTA1MDk0NzEsMzYgQzEwLjE0NDc3MjksMzYgMTIuODEwMTkyMywzNC4xNDU0MjU2IDEyLjgxMDE5MjMsMzEuODkzNzM3NiBMMTIuODEwMTkyMywxNiBMMTMsMTYgWiIgaWQ9IkZpbGwtOCIgZmlsbD0iIzAwOTk5OSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNC40OTk0MDgzNyw1IEM2LjQzMjM1OTk1LDUgOCw2LjU2NjczMDE5IDgsOC41IEM4LDEwLjQzMzI2OTggNi40MzIzNTk5NSwxMiA0LjQ5OTQwODM3LDEyIEMyLjU2NjQ1ODUsMTIgMSwxMC40MzMyNjk4IDEsOC41IEMxLDYuNTY2NzMwMTkgMi41NjY0NTg1LDUgNC40OTk0MDgzNyw1IiBpZD0iRmlsbC05IiBmaWxsPSIjQUFFNkY1Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik02NC41MDA4NDAzLDM0IEM1OC4xNDk1MDA4LDM0IDUzLDI3Ljk1NjkwNzMgNTMsMjAuNTAwOTkzNCBDNTMsMTMuMDQ1MDc5NiA1OC4xNDk1MDA4LDcgNjQuNTAwODQwMyw3IEM3MC44NTA0OTkyLDcgNzYsMTMuMDQ1MDc5NiA3NiwyMC41MDA5OTM0IEM3NiwyNy45NTY5MDczIDcwLjg1MDQ5OTIsMzQgNjQuNTAwODQwMywzNCBaIiBpZD0iRmlsbC0xMCIgZmlsbD0iI0FBRTZGNSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJNMTUsOTcgTDE1LDY5IEwxMC42LDY5IEwxMC42LDk3IEwxNSw5NyBaIE0zMiw5OC43MiBMMzIsOTQuOCBMMzEuNiw5NC44IEMzMC44OCw5NC44IDMwLjU2LDk0LjcyIDMwLjM2LDk0LjIgQzMwLjkyLDkzLjE2IDMxLjIsOTEuODQgMzEuMiw5MC4yOCBMMzEuMiw3NS43MiBDMzEuMiw3MS4yNCAyOC44NCw2OC42OCAyNC41Miw2OC42OCBDMjAuMiw2OC42OCAxNy44NCw3MS4yNCAxNy44NCw3NS43MiBMMTcuODQsOTAuMjggQzE3Ljg0LDk0Ljc2IDIwLjIsOTcuMzIgMjQuNTIsOTcuMzIgQzI1LjY4LDk3LjMyIDI2LjcyLDk3LjEyIDI3LjYsOTYuOCBDMjguMiw5OCAyOS40NCw5OC43MiAzMS40LDk4LjcyIEwzMiw5OC43MiBaIE0yNC41Miw5My4zMiBDMjMuMTIsOTMuMzIgMjIuMjQsOTIuNTYgMjIuMjQsOTAuNTYgTDIyLjI0LDc1LjQ0IEMyMi4yNCw3My40NCAyMy4xMiw3Mi42OCAyNC41Miw3Mi42OCBDMjUuOTIsNzIuNjggMjYuOCw3My40NCAyNi44LDc1LjQ0IEwyNi44LDkwLjU2IEMyNi44LDkyLjU2IDI1LjkyLDkzLjMyIDI0LjUyLDkzLjMyIFoiIGlkPSJJUSIgZmlsbD0iIzAwOTk5OSIgZmlsbC1ydWxlPSJub256ZXJvIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

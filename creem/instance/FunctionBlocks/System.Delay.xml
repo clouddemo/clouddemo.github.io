@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="System.Delay">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>Delay</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a2651224-a59c-4e0f-849f-8a6f63dc2372</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Delay</cm:DisplayName>
+                <cm:Description>Delay for a duration</cm:Description>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>延时</cm:DisplayName>
+                <cm:Description>延时一段持续时间</cm:Description>
+                <cm:Input>
+                    <cm:Port id="duration" displayName="持续时间"/>
+                </cm:Input>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="System"/>
+                <cm:Input>
+                    <cm:Port id="duration" type="UNECE" unit="s" defaultValue="0"/>
+                </cm:Input>
+                <cm:Output/>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmRlbGF5PC90aXRsZT4KICAgIDxnIGlkPSJkZWxheSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTU4LjIzOTk1Miw4IEMzMS40NTYsOCAxMCwyOS41MDQgMTAsNTYgQzEwLDgyLjQ5NiAzMS40NTYsMTA0IDU3Ljk1MiwxMDQgQzg0LjQ5NiwxMDQgMTA2LDgyLjQ5NiAxMDYsNTYgQzEwNiwyOS41MDQgODQuNDk2LDggNTguMjM5OTUyLDggWiBNNTguNzQwNTc2OSw5NSBMNTguNzQwNTc2OSw5NSBDMzcuMjI4NzUsOTUgMjAsNzcuNzcxMjUgMjAsNTYuNSBDMjAsMzUuMjI4NzUgMzcuMjI4NzUsMTggNTguNSwxOCBDNzkuNzcxMjUsMTggOTcsMzUuMjI4NzUgOTcsNTYuNSBDOTcsNzcuNzcxMjUgNzkuNzcxMjUsOTUgNTguNzQwNTc2OSw5NSBaIE02MC4wNTg4MTE3LDMyIEw1MywzMiBMNTMsNjAuODUyNDU5IEw3Ny40NzA1OTQyLDc2IEw4MSw3MC4wODUyNDU5IEw2MC4wNTg4MTE3LDU3LjI0NTkwMTYgTDYwLjA1ODgxMTcsMzIgWiIgaWQ9IkZpbGwtMSIgZmlsbD0iIzAwMDAwMCI+PC9wYXRoPgogICAgPC9nPgo8L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

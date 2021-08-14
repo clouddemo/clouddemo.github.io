@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="System.Manual">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>Manual</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a2651224-a59c-4e0f-849f-8a6f63dc2372</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Manual</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>人员动作</cm:DisplayName>
+                <cm:Description>持续人工流程，直到下一个完成判定点</cm:Description>
+                <cm:Category type="Manual" displayName="人工"/>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="Manual"/>
+                <cm:PhysicalNode type="Human">
+                    <cm:DeviceDescription ref="Human.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input/>
+                <cm:Output/>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB3aWR0aD0iNTAzIiBoZWlnaHQ9IjUwMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MDMuNjA3IDUwMy42MDciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUwMy42MDcgNTAzLjYwNzsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGQ9Ik00NzguNjcsNDE3Ljk5M2MtNTAuMzUyLTI2LjQ5OC04OC44Ny00MS4yMTItMTIzLjA4MS00Ny4wMmwzLjcyNy01LjEyYzEuNDYtMi4wMTQsMS45NTYtNC41NTgsMS4zNi02Ljk2N2wtNy43OTgtMzEuMTY1IGMyMC44ODMtMjkuNDQ0LDMzLjIyMS02Ni4yMjQsMzMuMjIxLTEwMS4wOTl2LTMzLjU3NGg4LjM5M2gxNi43ODdjNC42NDIsMCw4LjM5My0zLjc2LDguMzkzLTguMzkzIGMwLTQuNjQyLTMuNzUyLTguMzkzLTguMzkzLTguMzkzaC04LjM5M3YtOC4zOTNjMC0yMy4zODQtNS41MDYtNDUuNDA5LTE1LjM3Ny02NC45OTlsLTc1LjM2NSwxNC40ODcgYy0wLjUyOSwwLjEwMS0xLjA1OCwwLjE1MS0xLjU4NiwwLjE1MWMtMi4xOTksMC00LjMzOS0wLjg3My01LjkyNi0yLjQ1MWMtMS45NjQtMS45NzItMi44MzctNC43ODQtMi4zMTctNy41MjFsMTMuNzY1LTcyLjI2OCBjLTcuMTA5LTMuMTk4LTE0LjUzNy01Ljk2OC0yMi4zMS04LjE3NXYtMS43NzlDMjkzLjc3LDExLjM1NiwyODIuNDE0LDAsMjY4LjQ1NiwwaC0zMy4yOTcgYy0xMy45NjcsMC0yNS4zMjMsMTEuMzU2LTI1LjMyMywyNS4zMTV2MS43NzljLTcuNzY0LDIuMjA4LTE1LjE5Miw0Ljk3Ny0yMi4zMDEsOC4xNzVsMTMuNzY1LDcyLjI2OCBjMC41MiwyLjczNi0wLjM1Myw1LjU0OC0yLjMxNyw3LjUyMWMtMS41ODYsMS41NzgtMy43MjcsMi40NTEtNS45MzQsMi40NTFjLTAuNTI5LDAtMS4wNTgtMC4wNS0xLjU4Ni0wLjE1MWwtNzUuMzU2LTE0LjQ4NyBjLTkuODcxLDE5LjU5LTE1LjM4NSw0MS42MTUtMTUuMzg1LDY0Ljk5OXY4LjM5M2gtOC4zOTNjLTQuNjMzLDAtOC4zOTMsMy43NTItOC4zOTMsOC4zOTNjMCw0LjYzMywzLjc2LDguMzkzLDguMzkzLDguMzkzIGgxNi43ODdoOC4zOTN2MzMuNTc0YzAsMzQuODc1LDEyLjM0Nyw3MS42NTUsMzMuMjIxLDEwMS4wOTlsLTcuNzg5LDMxLjE2NWMtMC42MDQsMi40MDktMC4xMDEsNC45NTIsMS4zNiw2Ljk2N2wzLjcyNyw1LjEyIGMtMzQuMjEyLDUuODA4LTcyLjcyOSwyMC41MjItMTIzLjA4MSw0Ny4wMkM5LjU2LDQyNi4wODUsMCw0NDEuOTIzLDAsNDU5LjMyM3YzNS44OWMwLDQuNjMzLDMuNzYsOC4zOTMsOC4zOTMsOC4zOTNoMjAxLjQ0MyBoMC4wMDhoMy4xMzljMC4wMDgsMCwwLjAwOC0wLjAwOCwwLjAxNy0wLjAwOGw3Ny4yNTMtMC4wNjdjMC4xMzQsMC4wMDgsMC4yNDMsMC4wNzYsMC4zNzgsMC4wNzZoMjA0LjU4MiBjNC42NDIsMCw4LjM5My0zLjc2LDguMzkzLTguMzkzdi0zNS44OUM1MDMuNjA3LDQ0MS45MjMsNDk0LjA1NSw0MjYuMDg1LDQ3OC42Nyw0MTcuOTkzeiBNMTM0LjI5NSwyMjYuNjIzdi0zMy41NzRoMjM1LjAxNiB2MzMuNTc0YzAsMzcuNzk2LTEzLjM3MSw3MS4wNTktMzMuMTQ2LDk2LjAwNGMtMC4yOTQsMC4yODUtMC42OCwwLjQ2Mi0wLjkzMiwwLjc4OWMtMi44ODcsMy42OTMtNS44NzUsNy4xNzYtOC45NDcsMTAuNDUgYy0wLjAxNywwLjAxNy0wLjAzNCwwLjAzNC0wLjA1LDAuMDVjLTIuMDQsMi4xNTctNC4xNjMsNC4wNzktNi4yNzgsNi4wNTJjLTIwLjUxNCwxOC40OTktNDQuODgsMjkuMzQ0LTY4LjE1NSwyOS4zNDQgYy0yMy4yNjcsMC00Ny42MzMtMTAuODQ0LTY4LjE1NS0yOS4zNDRjLTIuMTA3LTEuOTcyLTQuMjMtMy44OTUtNi4yNy02LjA1MmMtMC4wMTctMC4wMTctMC4wMzQtMC4wMzQtMC4wNS0wLjA1IGMtMy4wNzItMy4yNzMtNi4wNjgtNi43NTctOC45NTYtMTAuNDVjLTAuMjUyLTAuMzI3LTAuNjMtMC41MDQtMC45MjMtMC43ODlDMTQ3LjY3NCwyOTcuNjgyLDEzNC4yOTUsMjY0LjQxOSwxMzQuMjk1LDIyNi42MjN6IE0xNjAuMTgsMzU5LjE0N2wzLjc2OS0xNS4wNThjMC4wMTcsMC4wMjUsMC4wNDIsMC4wNDIsMC4wNTksMC4wNTljMjAuMjg3LDIyLjA2Niw0Ni4wOTcsMzcuNjExLDc1LjE4OCw0MS4xNDUgYzAuMDE3LDAsMC4wMzQsMC4wMDgsMC4wNSwwLjAwOGwtMjIuNzgsNTEuMjQyTDE2MC4xOCwzNTkuMTQ3eiBNMjIwLjA4NCw0ODYuODExbDUuMDI4LTI1LjE3Mmg1My4zOTFsMi4xMzIsMTAuNjM1bDIuODk2LDE0LjQ3OSBMMjIwLjA4NCw0ODYuODExeiBNMjg3LjE0OCw0MzYuNTQzbC0yMi43OC01MS4yNDJjMC4wMTcsMCwwLjAzNC0wLjAwOCwwLjA1LTAuMDA4YzI5LjA5Mi0zLjUzNCw1NC45MDItMTkuMDc4LDc1LjE4OC00MS4xNDUgYzAuMDE3LTAuMDE3LDAuMDQyLTAuMDM0LDAuMDU5LTAuMDU5bDMuNzY5LDE1LjA1OEwyODcuMTQ4LDQzNi41NDN6Ii8+IDxwYXRoIGQ9Ik0zMzEuNjE3LDQzLjQxNWwtMTAuNSw1NS4xMTFsNTcuNDM2LTExLjA0NkMzNjYuNjI2LDY5Ljc2MiwzNTAuNjc5LDU0Ljc0NiwzMzEuNjE3LDQzLjQxNXoiLz4gPHBhdGggZD0iTTE3MS45OTYsNDMuNDE1Yy0xOS4wNjIsMTEuMzMxLTM1LjAwOSwyNi4zNDctNDYuOTM2LDQ0LjA2Nmw1Ny40MzYsMTEuMDQ2TDE3MS45OTYsNDMuNDE1eiIvPjwvZz48L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

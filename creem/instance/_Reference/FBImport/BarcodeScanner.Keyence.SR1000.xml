@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+-->
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+
+    <cm:DeviceDescription id="BarcodeScanner.Keyence.SR1000">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.DD.{id}</cm:Namespace>
+            <cm:Name>Keyence.SR1000</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID/>
+            <cm:Organization/>
+            <cm:Certification/>
+        </cm:Metadata>
+
+        <cm:UIInformation>
+            <cm:Content lang="en-US">
+                <cm:DisplayName>SR1000</cm:DisplayName>
+                <cm:Description>Keyence Barcode Scanner</cm:Description>
+                <cm:DeviceType id="BarcodeScanner" displayName="Barcode Scanner"/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>SR1000</cm:DisplayName>
+                <cm:Description>基恩士条码扫描器</cm:Description>
+                <cm:DeviceType id="BarcodeScanner" displayName="条码扫描器"/>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:DeviceType id="BarcodeScanner"/>
+                <cm:Parent>
+                    <cm:Communication ref="Ethernet">
+                        <cm:Parameters>
+                            <cm:Parameter id="ipAddress" defaultValue="192.168.1.100"/>
+                            <!-- Port number shall be in range 1025~65535, RFC 3232 <= 1024 is not allowed -->
+                            <cm:Parameter id="portNumber" defaultValue="9004"/>
+                        </cm:Parameters>
+                    </cm:Communication>
+                </cm:Parent>
+                <cm:Children/>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG"></cm:Content>
+        </cm:Resource>
+    </cm:DeviceDescription>
+</cm:CIMI>

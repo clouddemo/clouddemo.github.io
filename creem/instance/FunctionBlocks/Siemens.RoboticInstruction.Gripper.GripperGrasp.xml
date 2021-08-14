@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.RoboticInstruction.Gripper.GripperGrasp">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>GripperGrasp</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Gripper Grasp</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>夹爪抓取</cm:DisplayName>
+                <cm:Description/>
+                <cm:Input>
+                    <cm:Port id="position" displayName="位置"/>
+                    <cm:Port id="speed" displayName="速度"/>
+                    <cm:Port id="force" displayName="力度"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="Gripper">
+                    <cm:DeviceDescription ref="Gripper.Unknown"/>
+                    <cm:DeviceDescription ref="Gripper.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="position" type="Float" defaultValue="20.0"/>
+                    <cm:Port id="speed" type="UNECE" unit="mm/s" defaultValue="100"/>
+                    <cm:Port id="force" type="UNECE" unit="N" defaultValue="50" minValue="5" maxValue="50"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmdyaXBwZXItZ3Jhc3A8L3RpdGxlPgogICAgPGcgaWQ9ImdyaXBwZXItZ3Jhc3AiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJncmFzcCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMy4wMDAwMDAsIC0yLjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMTgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg1LjAwMDAwMCwgOTMuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC04NS4wMDAwMDAsIC05My4wMDAwMDApIHRyYW5zbGF0ZSg2OS4wMDAwMDAsIDc3LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IkZpbGwtNy1Db3B5IiBmaWxsPSIjMDA5OTk5IiBmaWxsLXJ1bGU9Im5vbnplcm8iIHBvaW50cz0iMTUuODkyNTA2NSAzMS43ODUwMTI5IDMxLjc4NTAxMjkgMTUuODkyNTA2NSAxNS44OTI1MDY1IDAiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIwIiB5MT0iMTUuODkyNTA2NSIgeDI9IjE4LjU0MTI1NzUiIHkyPSIxNS44OTI1MDY1IiBpZD0iU3Ryb2tlLTUtQ29weSIgc3Ryb2tlPSIjMDA5OTk5IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvbGluZT4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMTMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxLjUwMDAwMCwgOTMuMDAwMDAwKSBzY2FsZSgtMSwgMSkgcm90YXRlKC0xODAuMDAwMDAwKSB0cmFuc2xhdGUoLTIxLjUwMDAwMCwgLTkzLjAwMDAwMCkgdHJhbnNsYXRlKDQuMDAwMDAwLCA3Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIwIiB5MT0iMTUuODkyNTA2NSIgeDI9IjIxLjUzMTc4MjkiIHkyPSIxNS44OTI1MDY1IiBpZD0iU3Ryb2tlLTUtQ29weSIgc3Ryb2tlPSIjMDA5OTk5IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvbGluZT4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJGaWxsLTctQ29weSIgZmlsbD0iIzAwOTk5OSIgZmlsbC1ydWxlPSJub256ZXJvIiBwb2ludHM9IjE4Ljg0MDMxMDEgMzEuNzg1MDEyOSAzNC45ODkxNDczIDE1Ljg5MjUwNjUgMTguODQwMzEwMSAwIj48L3BvbHlnb24+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTE3IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1My45MTMyODQsIDU0LjA2Nzg2Nikgcm90YXRlKC00NS4wMDAwMDApIHRyYW5zbGF0ZSgtNTMuOTEzMjg0LCAtNTQuMDY3ODY2KSB0cmFuc2xhdGUoMTcuNDEzMjg0LCAxNS4wNjc4NjYpIiBmaWxsPSIjMDA5OTk5IiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTU4LjMyNzMzMTEsNDAuNTE0ODMzNCBMMzEuNzQ5ODkyLDE2LjgyMzcxNTMgQzI0Ljc1NDQwMjMsMjMuNjg4MzQxMSAyNS4wMzIyNTY2LDM0LjU0ODQ4NjYgMzIuMzcxNjc1Nyw0MS4wOTQ2NzUgQzM5LjcwMjYyMzYsNDcuNjI4MTg5MiA1MS4zMzAxNDc0LDQ3LjM3OTQ1OTIgNTguMzI3MzMxMSw0MC41MTQ4MzM0IiBpZD0iRmlsbC0xIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8ZyBpZD0iR3JvdXAtMTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM2LjMxMTczNiwgNTQuMTExNjM2KSByb3RhdGUoLTE1LjAwMDAwMCkgdHJhbnNsYXRlKC0zNi4zMTE3MzYsIC01NC4xMTE2MzYpIHRyYW5zbGF0ZSgxNy4zMTE3MzYsIDM1LjExMTYzNikiPgogICAgICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC0xOSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTguOTcyNTI3LCAxOS4zNjMyNTEpIHJvdGF0ZSg1LjAwMDAwMCkgdHJhbnNsYXRlKC0xOC45NzI1MjcsIC0xOS4zNjMyNTEpIHRyYW5zbGF0ZSgxLjQ3MjUyNywgMi4zNjMyNTEpIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTI2LjM4NzI4NDksMjAuMjc1MTU2NSBDMjUuODAyMjMzOCwxOC41NTAwNjYyIDI0LjEwNzY1NzgsMTcuNjg5MzQ4NCAyMi42MDExOTEsMTguMzYxODQxMyBMMi4wODI5NTMxOSwyNy40NzE1NjA5IEMwLjU3NjQ4NjM0NywyOC4xNDQwNTM4IC0wLjE3Mjc2MTcxMSwzMC4wODg0MzUyIDAuNDA5MTAxMTQzLDMxLjgxMTY5ODIgQzAuOTkyNTU4MTQyLDMzLjU0MDQ0MzMgMi42OTAzMjIzNiwzNC4zOTkzMzM3IDQuMTk4MzgzMzUsMzMuNzI4NjY4MiBMMjQuNzE2NjIxMSwyNC42MTcxMjEyIEMyNi4yMjE0OTM4LDIzLjk0ODI4MzIgMjYuOTY5MTQ3OCwyMi4wMDU3MjkxIDI2LjM4NzI4NDksMjAuMjc1MTU2NSIgaWQ9IkZpbGwtNyI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMzMuMjA1MTkxOSwwLjI5NDA2MDMzOSBDMzEuNzAxNjMxNiwtMC40MjA3NDgxODcgMjkuOTAwNjQ1NywwLjIxMjI3NDQ2NiAyOS4xODQxOTUxLDEuNzA4OTU1OTMgTDE5LjM5NTQ0MjQsMjIuMDc1MjczOSBDMTguNjc0MDYyMSwyMy41NzAzMTk3IDE5LjMxMTYzNzQsMjUuMzYzMDY2IDIwLjgxNTE5NzcsMjYuMDc5NTEwMiBDMjIuMzE4NzU4LDI2Ljc5MjY4MyAyNC4xMTgxMDA3LDI2LjE2MTI5NjEgMjQuODM2MTk0NSwyNC42NjQ2MTQ2IEwzNC42MjY1OTA1LDQuMjk4Mjk2NjUgQzM1LjM0NDY4NDMsMi44MDQ4ODY2MiAzNC43MDg3NTIzLDEuMDA4ODY4ODYgMzMuMjA1MTkxOSwwLjI5NDA2MDMzOSIgaWQ9IkZpbGwtOSI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNi44NjEyNjc3LDIwLjA5MzgxOTEgQzM3LjY5MTUyOTUsMjEuNTQ5OTcxMyAzNy4xMTYwNjYzLDIzLjM1OTU3NDMgMzUuNTY2NDc1OCwyNC4xNDQ2NTg1IEwxNS4yOTE2MzM4LDM0LjQwMTI0NjIgTDguODYyNDE4NTMsNTMuNDAyOTc0OCBDOC4zMzI1MzEwNCw1NC45NjY0NjE2IDYuNjE1NzYxNTcsNTUuODEwODQyIDUuMDI5NDAwNTUsNTUuMjg4NTk1IEMzLjQ0MTM4ODgyLDU0Ljc2Nzk3NTEgMi41ODMwMDQxMSw1My4wNzQzMzM1IDMuMTEyODkxNiw1MS41MTA4NDY3IEwxMC4zMjE2NzI2LDMwLjIwOTM1OCBDMTAuODMyNTkyMywyOC43MDE4Mzc3IDEyLjQ0Mzg3NDQsMjcuODYyODYzIDEzLjk4MzU2NDQsMjguMjY5OTYxNyBMMzIuNTUyMjI3MywxOC44Nzg3MzAyIEMzNC4wOTQ4ODQ2LDE4LjA5NjkwMzUgMzYuMDI5MjcyOCwxOC42MzkyOTU4IDM2Ljg2MTI2NzcsMjAuMDkzODE5MSBaIiBpZD0iRmlsbC0xNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAuMDk4NjQwLCAzNi45ODIxMjgpIHJvdGF0ZSgxMC4wMDAwMDApIHRyYW5zbGF0ZSgtMjAuMDk4NjQwLCAtMzYuOTgyMTI4KSAiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJGaWxsLTE2IiBwb2ludHM9IjY0LjMzMjA1MDEgMzMuNDM0MjQ5NiAzOS4yNjA2ODE4IDkuMDE5MTAzNjQgMzAuMDQ3MzMzOCAxOC44OTAzMDY4IDU1LjEyMDMwMDYgNDMuMzAzODIwMiI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IkZpbGwtMTgiIHBvaW50cz0iNzIuMjIwODY3NCAxNC4wOTA0NjQ2IDYwLjI2OTg1NDggMjYuNjY1NzUyIDQ1Ljg0ODAwODcgMTIuODY4MTgwNiA1My41OTYxODIyIDQuNzE0OTkxNCA1Ni4yNjc3Mjc1IDEuOTA5Mjk0MjQgNTcuODAwNzUxNiAwLjI5Mjg5MzIxOSA2MC4yODU0MjczIDIuNjYxMDY4MjkgNjkuNzM2MTkxNyAxMS43MDY2NjM3Ij48L3BvbHlnb24+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS01IiBmaWxsPSIjQkVDREQ3IiBmaWxsLXJ1bGU9Im5vbnplcm8iIHg9IjQ0IiB5PSI3NSIgd2lkdGg9IjE4IiBoZWlnaHQ9IjI5Ij48L3JlY3Q+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

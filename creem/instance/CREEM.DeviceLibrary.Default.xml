@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.DeviceLibrary.Instance
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/devicelibrary" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_DeviceLibrary.xsd"
+-->
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.3" lang="en-US">
+
+    <cm:DeviceLibrary>
+
+        <cm:Metadata>
+            <cm:Namespace>CREEM.DeviceLibrary.Instance</cm:Namespace>
+            <cm:Name>DeviceLibrary</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description>A collection of DDs in WMB</cm:Description>
+            <cm:UUID>248F7A6E-C3d0-8b3E-b1C3-B4efEB0bbf8F</cm:UUID>
+            <cm:InstanceURI>http://data.siemens.com/creem/ddlibrary.xml</cm:InstanceURI>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+            <cm:Certification/>
+        </cm:Metadata>
+
+        <cm:UIInformation>
+            <cm:Content lang="en-US">
+                <cm:Library id="defaultDeviceLibrary" displayName="Device Library">
+                    <cm:Section id="Computer" displayName="Computer Controller">
+                        <cm:Section id="SBC">
+                            <cm:Section id="SBC.RaspberryPi" displayName="RaspberryPi">
+                                <cm:DeviceDescription id="Controller.SBC.RaspberryPi.400" displayName="RaspberryPi 400"/>
+                                <cm:DeviceDescription id="Controller.SBC.RaspberryPi.300" displayName="RaspberryPi 300"/>
+                            </cm:Section>
+                            <cm:Section id="SBC.BeagleBone" displayName="BeagleBone">
+                                <cm:DeviceDescription id="Controller.SBC.BeagleBone.Black" displayName="BeagleBone Black"/>
+                            </cm:Section>
+                            <cm:Section id="SBC.Qualcomm" displayName="Qualcomm">
+                                <cm:DeviceDescription id="Controller.SBC.Qualcomm.DragonBoard.410C" displayName="DragonBoard 410C"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section id="IPC">
+                            <cm:Section id="IPC.Siemens" displayName="Siemens">
+                                <cm:Section id="BoxPC" displayName="Box PC">
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.347G" displayName="Siemens 347G"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.547G" displayName="Siemens 547G"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.647E" displayName="Siemens 647E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.647D" displayName="Siemens 647D"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.847E" displayName="Siemens 847E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.847D" displayName="Siemens 847D"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.1047" displayName="Siemens 1047"/>
+                                </cm:Section>
+                                <cm:Section id="RackPC" displayName="Rack PC">
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.127E" displayName="Siemens 127E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.227E" displayName="Siemens 227E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.327E" displayName="Siemens 327E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.427E" displayName="Siemens 427E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.527G" displayName="Siemens 527G"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.627E" displayName="Siemens 627E"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.627D" displayName="Siemens 627D"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.827D" displayName="Siemens 827D"/>
+                                </cm:Section>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section id="IoTGateway">
+                            <cm:Section id="IoTGateway.Siemens" displayName="Siemens">
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2050" displayName="Siemens IoT2050"/>
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2040" displayName="Siemens IoT2040"/>
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2000" displayName="Siemens IoT2000"/>
+                                <cm:DeviceDescription id="Controller.IPC.Siemens.127E" displayName="Siemens 127E"/>
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="PLC">
+                        <cm:Section id="PLC.Siemens" displayName="Siemens">
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71200" displayName="S7 1200"/>
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71500" displayName="S7 1500"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="HumanResource" displayName="Human Resource"/>
+
+                    <cm:Section id="Robot">
+                        <cm:Section id="Cobot" displayName="Collaboration Robot">
+                            <cm:Section id="Cobot.UniversalRobots" displayName="UniversalRobots">
+                                <cm:DeviceDescription id="Robotic.Cobot.UniversalRobots.UR5" displayName="UR5"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.UniversalRobots.UR5E" displayName="UR5E"/>
+                            </cm:Section>
+                            <cm:Section id="Cobot.Aubo" displayName="AUBO">
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i3" displayName="AUBO-i3"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i5" displayName="AUBO-i5"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i10" displayName="AUBO-i10"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i16" displayName="AUBO-i16"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section id="IndustrialRobot" displayName="Industrial Robot">
+                            <cm:Section id="IndustrialRobot.Nachi" displayName="Nachi">
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MR35" displayName="Nachi MR35"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MZ04" displayName="Nachi MZ04"/>
+                            </cm:Section>
+                            <cm:Section id="IndustrialRobot.OTC" displayName="OTC">
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-B4S" displayName="OTC FD-B4S"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-V166" displayName="OTC FD-V166"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-V210" displayName="OTC FD-V210"/>
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="Gripper">
+                        <cm:Section id="Gripper.Schunk" displayName="Schunk">
+                            <cm:DeviceDescription id="Gripper.Schunk.32-068" displayName="Schunk 32-068"/>
+                        </cm:Section>
+                        <cm:Section id="Gripper.Robotiq" displayName="Robotiq">
+                            <cm:DeviceDescription id="Gripper.Robotiq.85" displayName="Robotiq 85"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="Camera">
+                        <cm:Section id="2D">
+                            <cm:Section id="Camera.2D.Keyence" displayName="Keyence">
+                            </cm:Section>
+                            <cm:Section id="Camera.2D.ImageSource" displayName="ImageSource">
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="AGV">
+                        <cm:Section id="AGV.Seer" displayName="Seer">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="BarcodeScanner">
+                        <cm:Section id="BarcodeScanner.Keyence" displayName="Keyence">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="TorqueWrench">
+                        <cm:Section id="TorqueWrench.Atlas" displayName="Atlas">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="HandheldComputer" displayName="Handheld Computer">
+                    </cm:Section>
+
+                    <cm:Section id="UserDevices" displayName="User Devices"/>
+                </cm:Library>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:Library id="defaultDeviceLibrary" displayName="设备库">
+                    <cm:Section id="Computer" displayName="计算机控制器">
+                        <cm:Section id="SBC" displayName="单板机">
+                            <cm:Section id="SBC.RaspberryPi" displayName="树莓派"/>
+                            <cm:Section id="SBC.Qualcomm" displayName="高通"/>
+                        </cm:Section>
+                        <cm:Section id="IPC" displayName="工控机">
+                            <cm:Section id="IPC.Siemens" displayName="西门子">
+                                <cm:Section id="BoxPC" displayName="便携式"/>
+                                <cm:Section id="RackPC" displayName="机架式"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section id="IoTGateway" displayName="物联网网关">
+                            <cm:Section id="IoTGateway.Siemens" displayName="西门子"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="PLC">
+                        <cm:Section id="PLC.Siemens" displayName="西门子">
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71200" displayName="S7 1200"/>
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71500" displayName="S7 1500"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="HumanResource" displayName="人力资源"/>
+
+                    <cm:Section id="Button" displayName="按钮">
+                        <cm:Section id="PushButton" displayName="按钮">
+                        </cm:Section>
+                        <cm:Section id="RadioButton" displayName="开关按钮"/>
+                    </cm:Section>
+
+                    <cm:Section id="LED">
+                    </cm:Section>
+
+                    <cm:Section id="Sensor" displayName="传感器">
+                        <cm:Section id="PositionSensor" displayName="位置传感器"/>
+                        <cm:Section id="PressureSensor" displayName="压力传感器"/>
+                        <cm:Section id="LevelSensor" displayName="液位传感器"/>
+                        <cm:Section id="ForceSensor" displayName="力传感器"/>
+                        <cm:Section id="GasSensor" displayName="气体传感器"/>
+                        <cm:Section id="SemiconductorSensor" displayName="半导体传感器"/>
+                        <cm:Section id="FiberOpticSensor" displayName="光纤传感器"/>
+                        <cm:Section id="ImageSensor" displayName="图像传感器"/>
+                    </cm:Section>
+
+                    <cm:Section id="Robot" displayName="机器人">
+                        <cm:Section id="Cobot" displayName="协作机器人">
+                            <cm:Section id="Cobot.UniversalRobots" displayName="优傲UR">
+                            </cm:Section>
+                            <cm:Section id="Cobot.Aubo" displayName="遨博AUBO">
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section id="IndustrialRobot" displayName="工业机器人">
+                            <cm:Section id="IndustrialRobot.Nachi" displayName="那智不二越">
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MR35" displayName="那智MR35"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MZ04" displayName="那智MZ04"/>
+                            </cm:Section>
+                            <cm:Section id="IndustrialRobot.OTC" displayName="欧地希OTC">
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section id="Gripper" displayName="夹爪">
+                        <cm:Section id="Gripper.Schunk" displayName="雄克"/>
+                    </cm:Section>
+                    <cm:Section id="Camera" displayName="相机">
+                        <cm:Section id="2D">
+                            <cm:Section id="Camera.2D.Keyence" displayName="基恩士">
+                            </cm:Section>
+                            <cm:Section id="Camera.2D.ImageSource" displayName="映美净">
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="AGV" displayName="AGV">
+                        <cm:Section id="AGV.Seer" displayName="先知">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="BarcodeScanner" displayName="条码扫描器">
+                        <cm:Section id="BarcodeScanner.Keyence" displayName="基恩士">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="TorqueWrench" displayName="力矩扳手">
+                        <cm:Section id="TorqueWrench.Atlas" displayName="阿特拉斯">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section id="HandheldComputer" displayName="手持电脑">
+                    </cm:Section>
+
+                    <cm:Section id="Forklift" displayName="叉车">
+                    </cm:Section>
+
+                    <cm:Section id="Resource" displayName="资源"/>
+                    <cm:Section id="UserDevices" displayName="用户设备"/>
+                </cm:Library>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Library type="DeviceLibrary" id="defaultDeviceLibrary">
+
+                    <cm:Section type="Category" id="Computer">
+                        <cm:Section type="Category" id="SBC">
+                            <cm:DeviceDescription ref="Controller.SBC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:Section type="Manufacturer" id="SBC.RaspberryPi">
+                                <cm:DeviceDescription id="Controller.SBC.RaspberryPi.400" ref="Controller.SBC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Controller.SBC.RaspberryPi.300" ref="Controller.SBC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                            <cm:Section type="Manufacturer" id="SBC.BeagleBone">
+                                <cm:DeviceDescription id="Controller.SBC.BeagleBone.Black" ref="Controller.SBC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                            <cm:Section type="Manufacturer" id="SBC.Qualcomm">
+                                <cm:DeviceDescription id="Controller.SBC.Qualcomm.DragonBoard.410C" ref="Controller.SBC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section type="Category" id="IPC">
+                            <cm:DeviceDescription ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:Section type="Manufacturer" id="IPC.Siemens">
+                                <cm:Section type="Series" id="BoxPC">
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.347G" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.547G" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.647E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.647D" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.847E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.847D" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.BoxPC.1047" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                </cm:Section>
+                                <cm:Section type="Series" id="RackPC">
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.127E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.227E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.327E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.427E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.527G" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.627E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.627D" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                    <cm:DeviceDescription id="Controller.IPC.Siemens.RackPC.827D" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                </cm:Section>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section type="Category" id="IoTGateway">
+                            <cm:Section type="Manufacturer" id="IoTGateway.Siemens">
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2050" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2040" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Controller.IOT.Siemens.2000" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Controller.IPC.Siemens.127E" ref="Controller.IPC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:DeviceDescription ref="Controller.PC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="PLC">
+                        <cm:DeviceDescription ref="Controller.PLC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:Section type="Manufacturer" id="PLC.Siemens">
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71200" ref="Controller.PLC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:DeviceDescription id="Controller.PLC.Siemens.S71500" ref="Controller.PLC.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="HumanResource">
+                        <cm:DeviceDescription ref="Human.Group" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:DeviceDescription ref="Human.Operator.Male" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:DeviceDescription ref="Human.Operator.Female" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="Button">
+                        <cm:Section type="Category" id="PushButton">
+                            <cm:DeviceDescription ref="IO.PushButton.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        </cm:Section>
+                        <cm:Section type="Category" id="RadioButton"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="LED">
+                        <cm:DeviceDescription ref="IO.LED.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="Sensor">
+                        <cm:DeviceDescription ref="IO.Sensor.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:Section type="Category" id="PositionSensor"/>
+                        <cm:Section type="Category" id="PressureSensor"/>
+                        <cm:Section type="Category" id="LevelSensor"/>
+                        <cm:Section type="Category" id="ForceSensor"/>
+                        <cm:Section type="Category" id="GasSensor"/>
+                        <cm:Section type="Category" id="SemiconductorSensor"/>
+                        <cm:Section type="Category" id="FiberOpticSensor"/>
+                        <cm:Section type="Category" id="ImageSensor"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="Robot">
+                        <cm:Section type="Category" id="Cobot">
+                            <cm:DeviceDescription ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:Section type="Manufacturer" id="Cobot.UniversalRobots">
+                                <cm:DeviceDescription id="Robotic.Cobot.UniversalRobots.UR5" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.UniversalRobots.UR5E" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                            <cm:Section type="Manufacturer" id="Cobot.Aubo">
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i3" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i5" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i10" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.Cobot.AUBO.i16" ref="Robotic.Cobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                        </cm:Section>
+                        <cm:Section type="Category" id="IndustrialRobot">
+                            <cm:DeviceDescription ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:Section type="Manufacturer" id="IndustrialRobot.Nachi">
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MR35" ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.Nachi.MZ04" ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                            <cm:Section type="Manufacturer" id="IndustrialRobot.OTC">
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-B4S" ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-V166" ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                                <cm:DeviceDescription id="Robotic.IndustrialRobot.OTC.FD-V210" ref="Robotic.IndustrialRobot.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section type="Category" id="Gripper">
+                        <cm:DeviceDescription ref="Gripper.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:Section type="Manufacturer" id="Gripper.Schunk">
+                            <cm:DeviceDescription id="Gripper.Schunk.32-068" ref="Gripper.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        </cm:Section>
+                        <cm:Section type="Manufacturer" id="Gripper.Robotiq">
+                            <cm:DeviceDescription id="Gripper.Robotiq.85" ref="Gripper.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section type="Category" id="Camera">
+                        <cm:Section type="Category" id="2D">
+                            <cm:DeviceDescription ref="Camera.2D.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                            <cm:Section type="Manufacturer" id="Camera.2D.Keyence">
+                            </cm:Section>
+                            <cm:Section type="Manufacturer" id="Camera.2D.ImageSource">
+                            </cm:Section>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section type="Category" id="AGV">
+                        <cm:DeviceDescription ref="AGV.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                        <cm:Section type="Manufacturer" id="AGV.Seer">
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section type="Category" id="BarcodeScanner">
+                        <cm:Section type="Manufacturer" id="BarcodeScanner.Keyence">
+                            <cm:DeviceDescription ref="BarcodeScanner.Keyence.SR1000" location="BarcodeScanner.Keyence.SR1000.xml"/>
+                        </cm:Section>
+                    </cm:Section>
+                    <cm:Section type="Category" id="TorqueWrench">
+                        <cm:Section type="Manufacturer" id="TorqueWrench.Atlas">
+                            <cm:DeviceDescription ref="TorqueWrench.Atlas.PF4000" location="TorqueWrench.Atlas.PF4000.xml"/>
+                            <cm:DeviceDescription ref="TorqueWrench.Atlas.PF6000" location="TorqueWrench.Atlas.PF6000.xml"/>
+                        </cm:Section>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="HandheldComputer">
+                        <cm:DeviceDescription ref="Reader.HandheldComputer.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+                    
+                    <cm:Section type="Category" id="Forklift">
+                        <cm:DeviceDescription ref="Logistics.Forklift.Unknown" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="Resource">
+                        <cm:DeviceDescription ref="Resource.Dynamic" location="Siemens.DeviceDescriptions.Unknown.xml"/>
+                    </cm:Section>
+
+                    <cm:Section type="Category" id="UserDevices"/>
+                </cm:Library>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource/>
+
+    </cm:DeviceLibrary>
+</cm:CIMI>
+
+
+
+

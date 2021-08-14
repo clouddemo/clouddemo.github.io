@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.RoboticInstruction.Robotic.MoveCircular">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>MoveCircular</cm:Name>
+            <cm:Version>1.0.1</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Move Circular</cm:DisplayName>
+                <cm:Description>Move robotic arm from one point to another circular</cm:Description>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>圆弧移动</cm:DisplayName>
+                <cm:Description>将机械臂按照圆弧路径从一点移动至另一点</cm:Description>
+                <cm:Input>
+                    <cm:Port id="trajectory" displayName="轨迹">
+                        <cm:Parameter id="point" displayName="点">
+                            <cm:Parameter id="acceleration" displayName="加速度"/>
+                            <cm:Parameter id="velocity" displayName="速度"/>
+                            <cm:Parameter id="duration" displayName="持续时间"/>
+                            <cm:Parameter id="blending" displayName="融合"/>
+                            <cm:Parameter id="space" displayName="坐标"/>
+                            <cm:Parameter id="tool" displayName="工件坐标"/>
+                            <cm:Parameter id="selected" displayName="选择"/>
+                        </cm:Parameter>
+                    </cm:Port>
+                    <cm:Port id="reference" displayName="引用"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="Cobot">
+                    <cm:DeviceDescription ref="Robotic.Cobot.Unknown"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5E"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.AUBO.*"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.Denso.*"/>
+                </cm:PhysicalNode>
+                <!-- <cm:PhysicalNode>CREEM.DD.Robotic.UniversalRobots.UR5.1</cm:PhysicalNode> -->
+
+                <cm:Input>
+                    <cm:Port id="trajectory" type="Array" minCount="0" maxCount="unlimited">
+                        <cm:Parameter id="point" type="Struct">
+                            <cm:Parameter id="x" type="UNECE" unit="mm" defaultValue="0"/>
+                            <cm:Parameter id="y" type="UNECE" unit="mm" defaultValue="0"/>
+                            <cm:Parameter id="z" type="UNECE" unit="mm" defaultValue="0"/>
+                            <cm:Parameter id="rx" type="UNECE" unit="rad" defaultValue="0"/>
+                            <cm:Parameter id="ry" type="UNECE" unit="rad" defaultValue="0"/>
+                            <cm:Parameter id="rz" type="UNECE" unit="rad" defaultValue="0"/>
+                            <cm:Parameter id="acceleration" type="UNECE" unit="mm/s²" defaultValue="1200"/>
+                            <cm:Parameter id="velocity" type="UNECE" unit="mm/s" defaultValue="250"/>
+                            <cm:Parameter id="duration" type="UNECE" unit="s" defaultValue="25"/>
+                            <cm:Parameter id="blending" type="UNECE" unit="mm" defaultValue="36"/>
+                            <cm:Parameter id="space" type="Enum" defaultValue="Base"/>
+                            <cm:Parameter id="tool" type="String" defaultValue="Tool0"/>
+                            <cm:Parameter id="selected" type="Bool" defaultValue="true"/>
+                        </cm:Parameter>
+                    </cm:Port>
+                    <cm:Port id="reference" type="Ref"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPm1vdmUtY2lyPC90aXRsZT4KICAgIDxnIGlkPSJtb3ZlLWNpciIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Ik1vdmVDaXJjQ2FydCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4wMDAwMDAsIDE1LjAwMDAwMCkiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik01MC41LDYgQzc3LjI4NTgxMDIsNiA5OSwyMy45MDc2OTA3IDk5LDQ1Ljk5Nzk0NjggQzk5LDQ4LjczODQwMzIgOTguNjY1ODE0Myw1MS40MTQ0ODk1IDk4LjAyOTIxNzksNTQgTDkxLjQwODAyNzksNTMuOTk5NDQyMyBDOTIuMTQzOTIwNCw1MS40MzA4OTAzIDkyLjUzMzMzMzMsNDguNzUxOTIyNSA5Mi41MzMzMzMzLDQ1Ljk5Nzk0NjggQzkyLjUzMzMzMzMsMjYuODUzMDU4MiA3My43MTQzNjg4LDExLjMzMzA1OTcgNTAuNSwxMS4zMzMwNTk3IEMyNy4yODU2MzEyLDExLjMzMzA1OTcgOC40NjY2NjY2NywyNi44NTMwNTgyIDguNDY2NjY2NjcsNDUuOTk3OTQ2OCBDOC40NjY2NjY2Nyw0OC43NTE5MjI1IDguODU2MDc5NTQsNTEuNDMwODkwMyA5LjU5MTk3MTk4LDUzLjk5OTQ0MjMgTDIuOTcwNzgyMjcsNTQgQzIuMzM0MTg1NzksNTEuNDE0NDg5NSAyLDQ4LjczODQwMzIgMiw0NS45OTc5NDY4IEMyLDIzLjkwNzY5MDcgMjMuNzE0MTg5OCw2IDUwLjUsNiBaIiBpZD0i5b2i54q257uT5ZCIIiBmaWxsPSIjMDNEQURBIj48L3BhdGg+CiAgICAgICAgICAgIDxnIGlkPSLnvJbnu4QtMiIgZmlsbD0iIzAwOTk5OSIgc3Ryb2tlPSIjMDA5OTk5IiBzdHJva2Utd2lkdGg9IjIiPgogICAgICAgICAgICAgICAgPGVsbGlwc2UgaWQ9Ik92YWwtQ29weS0zIiBjeD0iNy4wNDY4NzUiIGN5PSI1MS45NzM2ODQyIiByeD0iNi40Mzc1IiByeT0iNi40MjEwNTI2MyI+PC9lbGxpcHNlPgogICAgICAgICAgICAgICAgPGVsbGlwc2UgaWQ9Ik92YWwtQ29weS0z5aSH5Lu9LTMiIGN4PSI5My45NTMxMjUiIGN5PSI1MS45NzM2ODQyIiByeD0iNi40Mzc1IiByeT0iNi40MjEwNTI2MyI+PC9lbGxpcHNlPgogICAgICAgICAgICAgICAgPGVsbGlwc2UgaWQ9Ik92YWwtQ29weS0z5aSH5Lu9LTQiIGN4PSI1MC41IiBjeT0iOC42MzE1Nzg5NSIgcng9IjguMDQ2ODc1IiByeT0iOC4wMjYzMTU3OSI+PC9lbGxpcHNlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgICAgIDxnIGlkPSLnvJbnu4QiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM5LjAwMDAwMCwgNTYuMDAwMDAwKSI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yLDkgTDMuMDc3MDg5NzUsMjAuNDcxNjI4OSBDMy4xNTM3NDU3MSwyMS4xNzYxMjM3IDMuOTIzNTU5ODQsMjEuMTc2MTIzNyAzLjkyMzU1OTg0LDIwLjQ3MTYyODkgTDUsOSBMMiw5IFoiIGlkPSJGaWxsLTEiIGZpbGw9IiNBQUU2RjUiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTM3LDYuNjIwNzY5MjIgQzM3LDcuMzkzMzI0MTQgMzYuNDgxMzYxLDggMzUuODIxODIwMyw4IEwzMy4zNjM5NzEzLDggQzMyLjg0NTMzMjMsNS4xODYwOTIwNSAzMC40OTc2MzMxLDMgMjcuOTUyMjA3NCwzIEMyNS40MDc1NzkxLDMgMjMuMDU4Njg3LDUuMTg2MDkyMDUgMjIuNTQwNDQzNSw4IEwxNS4xNzgxODYzLDggQzE0LjUxODYzOSw4IDE0LDcuMzkzMzI0MTQgMTQsNi42MjA3NjkyMiBMMTQsMS4zNzkyMzA3OCBDMTQsMC42MDY2NjkwOTcgMTQuNTE4NjM5LDAgMTUuMTc4MTg2MywwIEwzNS44MjE4MjAzLDAgQzM2LjQ4MTM2MSwwIDM3LDAuNjA2NjY5MDk3IDM3LDEuMzc5MjMwNzggTDM3LDYuNjIwNzY5MjIgWiIgaWQ9IkZpbGwtMyIgZmlsbD0iIzAwOTk5OSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNMCwzLjUgQzAsNC44NTg1NDM3NSAxLjA2NDkyOTEyLDYgMi4zMzMzMzM4NCw2IEwxNCw2IEwxNCwxIEwyLjMzMzMzMzg0LDEgQzEuMDE0MzgxMzUsMSAwLDIuMTQxNDU2MjUgMCwzLjUiIGlkPSJGaWxsLTQiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTMxLDM1IEw2LDM1IEw2LDMyLjc4NTU1MjggQzYsMzEuNzg1NDAxNyA2LjU4NDg3NDM3LDMxIDcuMzMwMTE3OTcsMzEgTDI5LjY3MDMzNTMsMzEgQzMwLjQxNTEyNTYsMzEgMzEsMzEuNzg1NDAxNyAzMSwzMi43ODU1NTI4IEwzMSwzNSBaIiBpZD0iRmlsbC01IiBmaWxsPSIjMDA5OTk5Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMC4xMTM3NzkyLDI4LjI3NTQyMzggTDksMzIgTDI2LDMyIEwyNC45MzQ0ODE3LDI4LjI3NTQyMzggQzI0LjY5Mjc1MDIsMjcuNTEwMTY3IDI0LjA2Mjg0OCwyNyAyMy4yODc3NDI2LDI3IEwxMS43NjA1MjQ3LDI3IEMxMC45ODU4MjcsMjcgMTAuMzA3NjU3NSwyNy41MTAxNjcgMTAuMTEzNzc5MiwyOC4yNzU0MjM4IiBpZD0iRmlsbC02IiBmaWxsPSIjQUFFNkY1Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMy40NjgxNzEyLDI4IEwxNCwyOCBMMjMuMzYwOTQ4OSw5IEMyNC4xNjc4MzEzLDExLjI3MTcwOTMgMjYuNDI3MTk5OCwxMi45MjM4Mjk2IDI5LjExNjgxNjgsMTIuOTIzODI5NiBDMjkuNzYyNDEzNywxMi45MjM4Mjk2IDMwLjQwODAxMDcsMTIuODIwOTI5OCAzMSwxMi42MTQyNDg2IEwyMy40NjgxNzEyLDI4IFoiIGlkPSJGaWxsLTciIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTcsNiBMMSw2IEwxLDEzLjE1MjE4MTkgQzEsMTQuMTY1NDQxNSAyLjMzMzUxMjc2LDE1IDMuOTUyNTQ3MzYsMTUgQzUuNTcyMzg2NDUsMTUgNi45MDUwOTYxNywxNC4xNjU0NDE1IDYuOTA1MDk2MTcsMTMuMTUyMTgxOSBMNi45MDUwOTYxNyw2IEw3LDYgWiIgaWQ9IkZpbGwtOCIgZmlsbD0iIzAwOTk5OSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNMi40OTk3NDY0NSwyIEMzLjMyODE1NDI3LDIgNCwyLjY3MTQ1NTggNCwzLjUgQzQsNC4zMjg1NDQyIDMuMzI4MTU0MjcsNSAyLjQ5OTc0NjQ1LDUgQzEuNjcxMzM5MzYsNSAxLDQuMzI4NTQ0MiAxLDMuNSBDMSwyLjY3MTQ1NTggMS42NzEzMzkzNiwyIDIuNDk5NzQ2NDUsMiIgaWQ9IkZpbGwtOSIgZmlsbD0iI0FBRTZGNSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNMjcuNTAwNDAxOSwxNCBDMjQuNDYyODA0NywxNCAyMiwxMS43NjE4MTc1IDIyLDkuMDAwMzY3OTQgQzIyLDYuMjM4OTE4MzYgMjQuNDYyODA0Nyw0IDI3LjUwMDQwMTksNCBDMzAuNTM3MTk1Myw0IDMzLDYuMjM4OTE4MzYgMzMsOS4wMDAzNjc5NCBDMzMsMTEuNzYxODE3NSAzMC41MzcxOTUzLDE0IDI3LjUwMDQwMTksMTQgWiIgaWQ9IkZpbGwtMTAiIGZpbGw9IiNBQUU2RjUiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

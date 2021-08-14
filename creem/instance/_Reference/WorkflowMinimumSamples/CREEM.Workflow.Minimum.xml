@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.Workflow.Instance
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/workflow" 
+    xsi:noNamespaceSchemaLocation="..\Schema\CREEM_Workflow.xsd"
+-->
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+
+    <cm:Workflow id="ProjectSample.Workflow.1">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.Workflow.Instance</cm:Namespace>
+            <cm:Name>Workflow.1</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>248F7A6E-C3d0-8b3E-b1C3-B4efEB0bbf8F</cm:UUID>
+            <cm:InstanceURI>http://data.siemens.com/creem/workflow_sample.xml</cm:InstanceURI>
+            <cm:Certification/>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+
+        <cm:UIInformation>
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Main Workflow</cm:DisplayName>
+                <cm:Diagram location="ProjectSample.Workflow.1.json"/>
+            </cm:Content>
+        </cm:UIInformation>
+        
+        <cm:Data>
+            <cm:Content>
+                <!-- Main Workflow is the unique one that connected START and END -->
+                <!-- Main Workflow cannot have input/output ports. -->
+                <cm:MainWorkflow id="Workflow.Main">
+                    <cm:Sequence>
+                        <cm:FBInstance ref="System.Idle.1"/>
+                        <cm:Parallel endLogic="AND">
+                            <cm:Sequence>
+                                <cm:FBInstance ref="System.Idle.1"/>
+                                <cm:FBInstance ref="System.Idle.1"/>
+                            </cm:Sequence>
+                            <cm:Sequence>
+                                <cm:FBInstance ref="System.Idle.1"/>
+                                <cm:FBInstance ref="System.Idle.1"/>
+                            </cm:Sequence>
+                        </cm:Parallel>
+
+                        <cm:SubWorkflowInstance ref="SubWorkflow.Sample.2"/>
+
+                        <!-- Condition Sample-->
+                        <cm:Condition id="System.Condition.1" value="RoboticInstruction.ReadDI.1.Output.Value == 1">
+                            <cm:Sequence>
+                                <cm:FBInstance ref="UserSkill.ScanBarcode.1" />
+                                <cm:FBInstance ref="UserSkill.CheckICT.1" />
+                            </cm:Sequence>
+                        </cm:Condition>
+
+                        <!-- Decorator.Repeat Sample-->
+                        <cm:Repeat id="System.Decorator.Repeat.1" value="15">
+                            <cm:Sequence>
+                                <cm:FBInstance ref="UserSkill.ScanBarcode.1" />
+                                <cm:FBInstance ref="UserSkill.CheckICT.1" />
+                            </cm:Sequence>
+                        </cm:Repeat>
+
+                        <!-- Decorator.While Sample-->
+                        <cm:While id="System.Decorator.While.1" expression="UserSkill.ScanBarcode.1.Output.status == failed">
+                            <Sequence>
+                                <cm:FBInstance ref="UserSkill.ScanBarcode.1" />
+                                <cm:FBInstance ref="UserSkill.CheckICT.1" />
+                            </Sequence>
+                        </cm:While>
+                    </cm:Sequence>
+                </cm:MainWorkflow>
+
+                <cm:FBInstances>
+                    <cm:FBInstance id="System.Delay.1">
+                        <Input>
+                            <Parameter id="delay" unit="ms">500</Parameter>
+                        </Input>
+                    </cm:FBInstance>
+                    
+                    <cm:FBInstance id="System.Idle.1">
+                        <Input>
+                            <Parameter id="delay" unit="s">3</Parameter>
+                        </Input>
+                    </cm:FBInstance>
+                </cm:FBInstances>
+
+                <cm:SubWorkflowInstances>
+                    <cm:SubWorkflowInstance id="SubWorkflow.Sample.1"/>
+                </cm:SubWorkflowInstances>
+                <cm:SubWorkflows>
+                    <cm:SubWorkflow id="SubWorkflow.Sample">
+                        
+                    </cm:SubWorkflow>
+                </cm:SubWorkflows>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource/>
+
+    </cm:Workflow>
+
+</cm:CIMI>
+
+
+
+

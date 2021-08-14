@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.SystemConfiguration.Instance
+Contact: zhenhua.zhou@siemens.com
+-->
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+
+    <cm:SystemConfiguration>
+        <cm:Metadata>
+            <cm:Namespace>SystemConfiguration.Sample.1</cm:Namespace>
+            <cm:Name>SystemConfiguration.Sample</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID/>
+            <cm:Certification/>
+            <cm:Organization/>
+        </cm:Metadata>
+
+        <cm:UIInformation/>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:DeviceTree>
+                    <cm:DDInstance id="Controller.IPC.Unknown.1">
+                        <cm:Parent>
+                            <cm:Communication id="Ethernet">
+                                <cm:Parameter id="ipAddress" value="127.0.0.1"/>
+                                <cm:Parameter id="portNumber" value="10000"/>
+                            </cm:Communication>
+                        </cm:Parent>
+                        <cm:Children>
+                            <cm:Communication id="Ethernet">
+                                <cm:DDInstance id="Camera.2D.Unknown.1">
+                                    <cm:Parent>
+                                        <cm:Communication id="Ethernet">
+                                            <cm:Parameter id="ipAddress" value="192.168.0.1"/>
+                                            <cm:Parameter id="portNumber" value="20000"/>
+                                        </cm:Communication>
+                                    </cm:Parent>
+                                </cm:DDInstance>
+                                <cm:DDInstance id="Robotic.Cobot.UniversalRobots.UR5.1">
+                                    <cm:Parent>
+                                        <cm:Communication id="Ethernet">
+                                            <cm:Parameter id="ipAddress" value="192.168.0.2"/>
+                                            <cm:Parameter id="portNumber" value="20000"/>
+                                        </cm:Communication>
+                                    </cm:Parent>
+                                    <cm:Children>
+                                        <cm:Communication id="IO">
+                                            <cm:DDInstance id="Gripper.Schunk.85.1">
+                                                <cm:Parent>
+                                                    <cm:Communication id="IO">
+                                                        <cm:Parameter id="ioType" value="DO"/>
+                                                        <cm:Parameter id="portName" value="I6,I7"/>
+                                                    </cm:Communication>
+                                                </cm:Parent>
+                                            </cm:DDInstance>
+                                        </cm:Communication>
+                                    </cm:Children>
+                                </cm:DDInstance>
+                            </cm:Communication>
+                            <cm:Communication id="USB">
+                                <cm:DDInstance id="BarcodeScanner.Keyence.S2000.1"/>
+                            </cm:Communication>
+                        </cm:Children>
+                    </cm:DDInstance>
+                    <cm:DDInstance id="Controller.PLC.Unknown.1">
+                        <cm:Children>
+                            <cm:Communication id="IO">
+                                <cm:DDInstance id="Button.PushButton.Unknown.1">
+                                    <cm:Parent>
+                                        <cm:Communication id="IO">
+                                            <cm:Parameter id="ioType" value="DI"/>
+                                            <cm:Parameter id="portName" value="I9.1"/>
+                                        </cm:Communication>
+                                    </cm:Parent>
+                                </cm:DDInstance>
+                                <cm:DDInstance id="Button.PushButton.Unknown.2">
+                                    <cm:Parent>
+                                        <cm:Communication id="IO">
+                                            <cm:Parameter id="ioType" value="DI"/>
+                                            <cm:Parameter id="portName" value="I9.2"/>
+                                        </cm:Communication>
+                                    </cm:Parent>
+                                </cm:DDInstance>
+                                <cm:DDInstance id="LED.Unknown.1">
+                                    <cm:Parent>
+                                        <cm:Communication id="IO">
+                                            <cm:Parameter id="ioType" value="DO"/>
+                                            <cm:Parameter id="portName" value="Q3.2"/>
+                                        </cm:Communication>
+                                    </cm:Parent>
+                                </cm:DDInstance>
+                            </cm:Communication>
+                        </cm:Children>
+                    </cm:DDInstance>
+                </cm:DeviceTree>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource/>
+    </cm:SystemConfiguration>
+    
+</cm:CIMI>
+
+
+
+

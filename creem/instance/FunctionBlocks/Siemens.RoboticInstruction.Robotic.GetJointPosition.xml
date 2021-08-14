@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.RoboticInstruction.Robotic.GetJointPosition">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>GetJointPosition</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Get Joint Position</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>获取关节位置</cm:DisplayName>
+                <cm:Description/>
+                <cm:Input>
+                    <cm:Port id="csType" displayName="CS类型"/>
+                    <cm:Port id="reference" displayName="引用"/>
+                    <cm:Port id="tool" displayName="工件坐标系"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="position" displayName="位置"/>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="Cobot">
+                    <cm:DeviceDescription ref="Robotic.Cobot.Unknown"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.UniversalRobots.UR5E"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.AUBO.*"/>
+                    <cm:DeviceDescription ref="Robotic.Cobot.Denso.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="csType" type="Float"/>
+                    <cm:Port id="reference" type="String"/>
+                    <cm:Port id="tool" type="String"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="position" type="String"/>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmdldC1qb2ludC1wb3NpdGlvbjwvdGl0bGU+CiAgICA8ZyBpZD0iZ2V0LWpvaW50LXBvc2l0aW9uIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0i57yW57uEIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0OC4wMDAwMDAsIDQxLjUwMDAwMCkgc2NhbGUoLTEsIDEpIHRyYW5zbGF0ZSgtNDguMDAwMDAwLCAtNDEuNTAwMDAwKSB0cmFuc2xhdGUoMTIuMDAwMDAwLCA3LjAwMDAwMCkiPgogICAgICAgICAgICA8cGF0aCBkPSJNNCwxOCBMNi4xNTQxNzk1LDM5Ljk4NzI4ODggQzYuMzA3NDkxNDIsNDEuMzM3NTcwNCA3Ljg0NzExOTY5LDQxLjMzNzU3MDQgNy44NDcxMTk2OSwzOS45ODcyODg4IEwxMCwxOCBMNCwxOCBaIiBpZD0iRmlsbC0xIiBmaWxsPSIjQUFFNkY1Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik03MiwxNC4wNjkxMzQ2IEM3MiwxNS43MTA4MTM4IDcxLjAwNzgyMTEsMTcgNjkuNzQ2MDkxLDE3IEw2NS4wNDQxMTksMTcgQzY0LjA1MTk0MDEsMTEuMDIwNDQ1NiA1OS41NjA2ODk0LDYuMzc0OTk4MiA1NC42OTExNzkzLDYuMzc0OTk4MiBDNDkuODIzMTk0OSw2LjM3NDk5ODIgNDUuMzI5NjYyLDExLjAyMDQ0NTYgNDQuMzM4MjM5NywxNyBMMzAuMjUzOTIxNiwxNyBDMjguOTkyMTc4OSwxNyAyOCwxNS43MTA4MTM4IDI4LDE0LjA2OTEzNDYgTDI4LDIuOTMwODY1NCBDMjgsMS4yODkxNzE4MyAyOC45OTIxNzg5LDAgMzAuMjUzOTIxNiwwIEw2OS43NDYwOTEsMCBDNzEuMDA3ODIxMSwwIDcyLDEuMjg5MTcxODMgNzIsMi45MzA4NjU0IEw3MiwxNC4wNjkxMzQ2IFoiIGlkPSJGaWxsLTMiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNiBDMCw4LjcxNzA4NzQ5IDIuMTI5ODU4MjQsMTEgNC42NjY2Njc2OSwxMSBMMjgsMTEgTDI4LDEgTDQuNjY2NjY3NjksMSBDMi4wMjg3NjI3LDEgMCwzLjI4MjkxMjUxIDAsNiIgaWQ9IkZpbGwtNCIgZmlsbD0iIzAwOTk5OSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNjIsNjkgTDEyLDY5IEwxMiw2NC41NzExMDU3IEMxMiw2Mi41NzA4MDM0IDEzLjE2OTc0ODcsNjEgMTQuNjYwMjM1OSw2MSBMNTkuMzQwNjcwNyw2MSBDNjAuODMwMjUxMyw2MSA2Miw2Mi41NzA4MDM0IDYyLDY0LjU3MTEwNTcgTDYyLDY5IFoiIGlkPSJGaWxsLTUiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTE5LjI5MzA3NDksNTUuNTUwODQ3NiBMMTcsNjMgTDUyLDYzIEw0OS44MDYyODU5LDU1LjU1MDg0NzYgQzQ5LjMwODYwMzMsNTQuMDIwMzM0IDQ4LjAxMTc0Niw1MyA0Ni40MTU5NDA3LDUzIEwyMi42ODM0MzMxLDUzIEMyMS4wODg0NjczLDUzIDE5LjY5MjIzNjEsNTQuMDIwMzM0IDE5LjI5MzA3NDksNTUuNTUwODQ3NiIgaWQ9IkZpbGwtNiIgZmlsbD0iI0FBRTZGNSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDUuMjY1NDg4Niw1NCBMMjgsNTQgTDQ1LjA2OTk2NTcsMTggQzQ2LjU0MTMzOTQsMjIuMzA0MjkxNCA1MC42NjEzNjQzLDI1LjQzNDYyNDYgNTUuNTY1OTYsMjUuNDM0NjI0NiBDNTYuNzQzMjI1MSwyNS40MzQ2MjQ2IDU3LjkyMDQ5MDEsMjUuMjM5NjU2NiA1OSwyNC44NDgwNTAxIEw0NS4yNjU0ODg2LDU0IFoiIGlkPSJGaWxsLTciIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTExLDE0IEwxLDE0IEwxLDI3LjUwOTY3NyBDMSwyOS40MjM2MTE4IDMuMjIyNTIxMjcsMzEgNS45MjA5MTIyNiwzMSBDOC42MjA2NDQwOSwzMSAxMC44NDE4MjcsMjkuNDIzNjExOCAxMC44NDE4MjcsMjcuNTA5Njc3IEwxMC44NDE4MjcsMTQgTDExLDE0IFoiIGlkPSJGaWxsLTgiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTMuOTk5NDkyODksNCBDNS42NTYzMDg1Myw0IDcsNS4zNDI5MTE1OSA3LDcgQzcsOC42NTcwODg0MSA1LjY1NjMwODUzLDEwIDMuOTk5NDkyODksMTAgQzIuMzQyNjc4NzEsMTAgMSw4LjY1NzA4ODQxIDEsNyBDMSw1LjM0MjkxMTU5IDIuMzQyNjc4NzEsNCAzLjk5OTQ5Mjg5LDQiIGlkPSJGaWxsLTkiIGZpbGw9IiNBQUU2RjUiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTU1LjAwMDczMDcsMjkgQzQ5LjQ3NzgyNjgsMjkgNDUsMjMuODUyMTgwMyA0NSwxNy41MDA4NDYzIEM0NSwxMS4xNDk1MTIyIDQ5LjQ3NzgyNjgsNiA1NS4wMDA3MzA3LDYgQzYwLjUyMjE3MzIsNiA2NSwxMS4xNDk1MTIyIDY1LDE3LjUwMDg0NjMgQzY1LDIzLjg1MjE4MDMgNjAuNTIyMTczMiwyOSA1NS4wMDA3MzA3LDI5IFoiIGlkPSJGaWxsLTEwIiBmaWxsPSIjQUFFNkY1Ij48L3BhdGg+CiAgICAgICAgPC9nPgogICAgICAgIDxjaXJjbGUgaWQ9IuakreWchuW9oiIgZmlsbD0iIzAwOTk5OSIgY3g9Ijk4LjUiIGN5PSI0MS41IiByPSI1LjUiPjwvY2lyY2xlPgogICAgICAgIDxjaXJjbGUgaWQ9IuakreWchuW9oiIgZmlsbD0iIzAwOTk5OSIgY3g9IjkxLjUiIGN5PSI1NS41IiByPSI1LjUiPjwvY2lyY2xlPgogICAgICAgIDxjaXJjbGUgaWQ9IuakreWchuW9oiIgZmlsbD0iIzAwOTk5OSIgY3g9Ijc4LjUiIGN5PSI2NC41IiByPSI1LjUiPjwvY2lyY2xlPgogICAgICAgIDxwYXRoIGQ9Ik0zMi4yMDUsMTA1LjA3IEMzNS4xMSwxMDUuMDcgMzcuNzM1LDEwMy44MSAzNy43MzUsOTguOTEgTDM3LjczNSw4MC41IEwzMy44ODUsODAuNSBMMzMuODg1LDk5LjE5IEMzMy44ODUsMTAxLjA4IDMyLjkwNSwxMDEuNTM1IDMxLjY4LDEwMS41MzUgQzMxLjI2LDEwMS41MzUgMzAuNzcsMTAxLjUzNSAzMC4zNSwxMDEuNSBMMzAuMzUsMTA1IEMzMC45OCwxMDUuMDcgMzEuNTA1LDEwNS4wNyAzMi4yMDUsMTA1LjA3IFogTTQ1Ljg5LDEwNS4yOCBDNDkuNjcsMTA1LjI4IDUxLjczNSwxMDMuMDQgNTEuNzM1LDk5LjEyIEw1MS43MzUsODYuMzggQzUxLjczNSw4Mi40NiA0OS42Nyw4MC4yMiA0NS44OSw4MC4yMiBDNDIuMTEsODAuMjIgNDAuMDQ1LDgyLjQ2IDQwLjA0NSw4Ni4zOCBMNDAuMDQ1LDk5LjEyIEM0MC4wNDUsMTAzLjA0IDQyLjExLDEwNS4yOCA0NS44OSwxMDUuMjggWiBNNDUuODksMTAxLjc4IEM0NC42NjUsMTAxLjc4IDQzLjg5NSwxMDEuMTE1IDQzLjg5NSw5OS4zNjUgTDQzLjg5NSw4Ni4xMzUgQzQzLjg5NSw4NC4zODUgNDQuNjY1LDgzLjcyIDQ1Ljg5LDgzLjcyIEM0Ny4xMTUsODMuNzIgNDcuODg1LDg0LjM4NSA0Ny44ODUsODYuMTM1IEw0Ny44ODUsOTkuMzY1IEM0Ny44ODUsMTAxLjExNSA0Ny4xMTUsMTAxLjc4IDQ1Ljg5LDEwMS43OCBaIE01OC4wNywxMDUgTDU4LjA3LDgwLjUgTDU0LjIyLDgwLjUgTDU0LjIyLDEwNSBMNTguMDcsMTA1IFogTTY0LjMsMTA1IEw2NC4zLDg3LjI1NSBMNjkuMDk1LDEwNSBMNzMuMDUsMTA1IEw3My4wNSw4MC41IEw2OS42Miw4MC41IEw2OS42Miw5NS4xNjUgTDY1LjY2NSw4MC41IEw2MC44MzUsODAuNSBMNjAuODM1LDEwNSBMNjQuMywxMDUgWiBNODIuNTcsMTA1IEw4Mi41Nyw4NCBMODYuNTk1LDg0IEw4Ni41OTUsODAuNSBMNzQuNjk1LDgwLjUgTDc0LjY5NSw4NCBMNzguNzIsODQgTDc4LjcyLDEwNSBMODIuNTcsMTA1IFoiIGlkPSJKT0lOVCIgZmlsbD0iIzAwOTk5OSIgZmlsbC1ydWxlPSJub256ZXJvIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

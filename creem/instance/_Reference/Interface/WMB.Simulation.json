@@ -1,0 +1,111 @@
+{
+    "wmbVisualization": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "workflow": [
+        	{
+                "type": "Manual",
+                "target": "People",
+                "action": "ScrewFastening",
+                "duration": "5s"
+            },
+            {
+                "type": "PLC",
+                "target": "Conveyer",
+                "action": "ConveyerMove",
+                "duration": "6s"
+            },
+            {
+                "type": "AGV",
+                "target": "AGV",
+                "action": "AGVMove",
+                "duration": "8s"
+            },
+            {
+                "type": "Robot",
+                "target": "AUBO",
+                "action": "MoveJoints",
+                "duration": "5s"
+            },
+            {
+                "type": "Gripper",
+                "target": "Gripper",
+                "action": "GripperOpen",
+                "duration": "1s"
+            },
+            {
+                "type": "Gripper",
+                "target": "Gripper",
+                "action": "GripperGrasp",
+                "duration": "2s"
+            },
+            {
+                "type": "Robot",
+                "target": "AUBO",
+                "action": "MoveLinear",
+                "duration": "5s"
+            }
+        ]
+    }
+}
+
+
+{
+    "wmbVisualization": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "workflow": [
+            {
+                "type": "Manual",
+                "target": "People.1",
+                "action": "ScrewFastening",
+                "duration": "5s"
+            },
+        ]
+    }
+}
+
+{
+    "wmbVisualization": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "result":{
+            "target": "People.1",
+            "action": "ScrewFastening",
+            "status": "Good"
+        }
+    }    
+}
+
+
+{
+    "wmbVisualization": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "parallel": "true",
+        "workflow": [
+            {
+                "type": "Robot",
+                "target": "AUBO",
+                "action": "MoveJoints",
+                "duration": "5s"
+            },
+            {
+                "type": "Robot",
+                "target": "UR5",
+                "action": "MoveLinear",
+                "duration": "8s"
+            }
+        ]
+    }
+}
+
+{
+    "wmbVisualization": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "result":{
+            "status": "Good"
+        }
+    }    
+}

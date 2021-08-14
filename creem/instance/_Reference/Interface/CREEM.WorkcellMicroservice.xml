@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.Import.Template
+Contact: zhenhua.zhou@siemens.com
+-->
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bs="http://creem.siemens.com/schemas/base" xmlns:cim="http://creem.siemens.com/schemas/cim" xmlns:cm="http://creem.siemens.com/schemas/creem" xmlns="http://creem.siemens.com/schemas/creem" state="Alpha" version="0.0.1" lang="en-US">
+	<cm:WorkcellMicroservice>
+		<cm:Metadata>
+			<cm:Namespace>CREEM.WorkcellMicroservice.ServiceName</cm:Namespace>
+			<cm:Name>ServiceName</cm:Name>
+			<cm:Version>1.0.0</cm:Version>
+			<cm:Description/>
+			<cm:UUID/>
+		</cm:Metadata>
+		<cm:UIInformation>
+			<cm:Content lang="en-US">
+				<cm:DisplayName>[FB Name]</cm:DisplayName>
+				<cm:Description>[FB Description]</cm:Description>
+			</cm:Content>
+			<cm:Content lang="zh-CN">
+				<cm:DisplayName>[功能块中文名]</cm:DisplayName>
+				<cm:Description>[功能块中文描述]</cm:Description>
+			</cm:Content>
+		</cm:UIInformation>
+		<cm:Data>
+			<cm:Content>
+				<!-- POST /ServiceName/Run -->
+				<!-- POST /ServiceName/GetState -->
+				<!-- POST /ServiceName/Stop -->
+				<cm:Protocol type="OpenAPI"/>
+				<cm:APIVersion type="v1"/>
+				<!-- /ServiceName/v1/inputs -->
+				<cm:Input>
+					<!-- /ServiceName/v1/input/parameter1 -->
+					<cm:Port id="parameter1" type="Number" defaultValue="0"/>
+					<cm:Port id="parameter2" type="String"/>
+					<cm:Port id="parameter3" type="Array">
+						<!-- /ServiceName/v1/input/parameter1/abc -->
+						<cm:Parameter id="abc" type="Struct">
+							<!-- /ServiceName/v1/input/parameter1/abc/1/x -->
+                            <cm:Parameter id="x" type="Number" unit="mm" defaultValue="0"/>
+                            <cm:Parameter id="y" type="Number" unit="s" defaultValue="0"/>
+                        </cm:Parameter>
+					</cm:Port>
+				</cm:Input>
+				<cm:Output>
+					<!-- GET /ServiceName/v1/output/parameter4 -->
+					<cm:Port id="parameter4" type="String"/>
+					<cm:Port id="parameter5" type="Number"/>
+					<cm:Port id="parameter6" type="Struct"/>
+				</cm:Output>
+			</cm:Content>
+		</cm:Data>
+		<cm:Resource/>
+	</cm:WorkcellMicroservice>
+</cm:CIMI>

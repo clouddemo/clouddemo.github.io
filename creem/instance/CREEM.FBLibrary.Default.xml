@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.xmlLibrary.Instance
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fblibrary" 
+    xsi:noNamespaceSchemaLocation="..\Schema\CREEM_FBLibrary.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.2" lang="en-US">
+    
+    <cm:FBLibrary>
+
+        <cm:Metadata>
+            <cm:Namespace>CREEM.xmlLibrary.Instance</cm:Namespace>
+            <cm:Name>FBLibrary</cm:Name>
+            <cm:Version>1.0.2</cm:Version>
+            <cm:Description>A collection of FBs in WMB</cm:Description>
+            <cm:UUID>248F7A6E-C3d0-8b3E-b1C3-B4efEB0bbf8F</cm:UUID>
+            <cm:InstanceURI>http://data.siemens.com/creem/fblibrary_sample.xml</cm:InstanceURI>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+            <cm:Certification/>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <cm:Content lang="en-US">
+                <cm:Library id="defaultFBLibrary" displayName="FB Library" icon="Resource.defaultFBLibraryIcon">
+                    <cm:Section id="general" displayName="General">
+                        <cm:FunctionBlock id="System.Start" displayName="Start"/>
+                        <cm:FunctionBlock id="System.End" displayName="End"/>
+
+                        <cm:FunctionBlock id="System.Comment" displayName="Comment"/>
+
+                        <cm:FunctionBlock id="System.Stop" displayName="Stop"/>
+                        <cm:FunctionBlock id="System.Abort" displayName="Abort"/>
+                    </cm:Section>
+                    <cm:Section id="logic" displayName="Logic">
+                        <cm:FunctionBlock id="System.Compositor.Parallel" displayName="Parallel" displayNameEnd="End Parallel"/>
+
+                        <cm:FunctionBlock id="System.Condition" displayName="Condition"/>
+                        <cm:FunctionBlock id="System.Decorator.Repeat" displayName="Repeat"/>
+                        <cm:FunctionBlock id="System.Decorator.While" displayName="While"/>
+                        <cm:FunctionBlock id="System.Decorator.Retry" displayName="Retry"/>
+                        <cm:FunctionBlock id="System.Decorator.Timeout" displayName="Timeout"/>
+
+                        <cm:FunctionBlock id="System.Compositor.IQC" displayName="IQC" displayNameElse="Else"/>
+                        <cm:FunctionBlock id="System.Compositor.If" displayName="If" displayNameEnd="End If"/>
+                        <cm:FunctionBlock id="System.Compositor.Switch" displayName="Switch" displayNameEnd="End Switch"/>
+                    </cm:Section>
+                    <cm:Section id="dataLayer" displayName="Data Layer"/>
+                    <cm:Section id="interfaceProtocol" displayName="Standard Protocol"/>
+                    <cm:Section id="plcInstruction" displayName="PLC Instruction"/>
+                    <cm:Section id="readerSkill" displayName="Reader Skill"/>
+                    <cm:Section id="executorSkill" displayName="Executor Skill"/>
+                    <cm:Section id="ioInstruction" displayName="I/O Instruction"/>
+                    <cm:Section id="customRoboticSkill" displayName="Custom Robotic Skill"/>
+                    <cm:Section id="roboticInstruction" displayName="Robotic Instruction"/>
+                    <cm:Section id="endEffector" displayName="Robotic End Effector"/>
+                    <cm:Section id="transportationSkill" displayName="Transportation"/>
+                    <cm:Section id="computerPanelInstruction" displayName="Control Panel"/>
+                    <cm:Section id="dynamicResource" displayName="Dynamic Resource"/>
+                    <cm:Section id="userSkill" displayName="User Skill"/>
+                </cm:Library>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:Library id="defaultFBLibrary" displayName="功能库">
+                    <cm:Section id="general" displayName="通用">
+                        <cm:FunctionBlock id="System.Start" displayName="开始"/>
+                        <cm:FunctionBlock id="System.End" displayName="结束"/>
+
+                        <cm:FunctionBlock id="System.Comment" displayName="注释"/>
+
+                        <cm:FunctionBlock id="System.Stop" displayName="工作流停止"/>
+                        <cm:FunctionBlock id="System.Abort" displayName="终止"/>
+                    </cm:Section>
+                    <cm:Section id="logic" displayName="逻辑">
+                        <cm:FunctionBlock id="System.Compositor.Parallel" displayName="并行" displayNameEnd="结束并行"/>
+
+                        <cm:FunctionBlock id="System.Condition" displayName="如果"/>
+                        <cm:FunctionBlock id="System.Decorator.Repeat" displayName="重复次数"/>
+                        <cm:FunctionBlock id="System.Decorator.While" displayName="循环"/>
+                        <cm:FunctionBlock id="System.Decorator.Retry" displayName="重试次数"/>
+                        <cm:FunctionBlock id="System.Decorator.Timeout" displayName="超时"/>
+
+                        <cm:FunctionBlock id="System.Compositor.IQC" displayName="来料质量控制" displayNameElse="否则"/>
+                        <cm:FunctionBlock id="System.Compositor.If" type="Compositor" displayName="选择分支" displayNameEnd="结束分支"/>
+                        <cm:FunctionBlock id="System.Compositor.Switch" type="Compositor" displayName="多选择分支" displayNameEnd="结束分支"/>
+                    </cm:Section>
+                    <cm:Section id="dataLayer" displayName="数据中台"/>
+                    <cm:Section id="interfaceProtocol" displayName="标准通信协议"/>
+                    <cm:Section id="plcInstruction" displayName="PLC指令"/>
+                    <cm:Section id="readerSkill" displayName="读取器技能"/>
+                    <cm:Section id="executorSkill" displayName="执行器技能"/>
+                    <cm:Section id="ioInstruction" displayName="输入输出指令"/>
+                    <cm:Section id="customRoboticSkill" displayName="自定义机器人技能"/>
+                    <cm:Section id="roboticInstruction" displayName="机器人指令"/>
+                    <cm:Section id="endEffector" displayName="机器人末端执行器"/>
+                    <cm:Section id="transportationSkill" displayName="运输技能"/>
+                    <cm:Section id="computerPanelInstruction" displayName="控制面板"/>
+                    <cm:Section id="dynamicResource" displayName="动态资源"/>
+                    <cm:Section id="userSkill" displayName="自定义技能"/>
+                </cm:Library>
+            </cm:Content>
+        </cm:UIInformation>
+        
+        <cm:Data>
+            <cm:Content>
+
+                <cm:Library id="defaultFBLibrary">
+                    <!-- <cm:AutoSection rule="favorite" displayName="Favorite"/> -->
+
+                    <cm:Section id="general" isMandatory="true">
+                        <cm:FunctionBlock id="System.Start" type="Process" xmlTag="Start" emptyDefinition="true" visible="false"/>
+                        <cm:FunctionBlock id="System.End" type="Process" xmlTag="Start" emptyDefinition="true" visible="false"/>
+
+                        <cm:FunctionBlock id="System.Comment" type="Comment" emptyDefinition="true"/>
+                        <cm:FunctionBlock ref="System.Idle" location="System.Idle.xml"/>
+                        <cm:FunctionBlock ref="System.Manual" location="System.Manual.xml"/>
+                        <cm:FunctionBlock ref="System.Delay" location="System.Delay.xml"/>
+
+                        <!-- <cm:FunctionBlock id="System.SubWorkflow"/> -->
+
+                        <!-- <cm:FunctionBlock ref="System.ErrorManager"/> -->
+                        <!-- <cm:FunctionBlock id="System.Stop" type="Process" xmlTag="Stop" emptyDefinition="true"/> -->
+                        <!-- <cm:FunctionBlock id="System.Abort" type="Process" xmlTag="Abort" emptyDefinition="true"/> -->
+                        <!-- <cm:FunctionBlock id="System.Pause" type="Process" /> -->
+                        <!-- <cm:FunctionBlock id="System.Resume" type="Process" /> -->
+                    </cm:Section>
+
+                    <cm:Section id="logic" isMandatory="true">
+                        <cm:FunctionBlock id="System.Compositor.Sequence" type="Compositor" xmlTag="Sequence" emptyDefinition="true" visible="false"/>
+                        <cm:FunctionBlock id="System.Compositor.Parallel" type="Compositor" xmlTag="Parallel" emptyDefinition="true"/>
+                        
+                        <cm:FunctionBlock id="System.Condition" type="Decorator" xmlTag="Condition" emptyDefinition="true"/>
+                        <cm:FunctionBlock id="System.Decorator.Repeat" type="Decorator" xmlTag="Repeat" expression="1" emptyDefinition="true" />
+                        <cm:FunctionBlock id="System.Decorator.While" type="Decorator" xmlTag="While" expression="false" emptyDefinition="true" />
+                        <cm:FunctionBlock id="System.Decorator.Retry" type="Decorator" xmlTag="Retry" expression="1" emptyDefinition="true" />
+                        <cm:FunctionBlock id="System.Decorator.Timeout" type="Decorator" xmlTag="Timeout" value="1" unit="s" emptyDefinition="true" />
+
+                        <cm:FunctionBlock id="System.Compositor.IQC" type="Decorator" xmlTag="IQC" emptyDefinition="true"/>
+                        <cm:FunctionBlock id="System.Compositor.If" type="Compositor" xmlTag="If" emptyDefinition="true"/>
+                        <cm:FunctionBlock id="System.Compositor.Switch" type="Compositor" xmlTag="Switch" emptyDefinition="true"/>
+                        <!-- <cm:FunctionBlock id="System.Compositor.Priority" type="Compositor" xmlTag="Priority"/> -->
+                    </cm:Section>
+
+                    <cm:Section id="dataLayer">
+                        <cm:FunctionBlock ref="Siemens.DataLayer.Danfoss.ReadMES" location="Siemens.DataLayer.Danfoss.ReadMES.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.Danfoss.WriteMES" location="Siemens.DataLayer.Danfoss.WriteMES.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.Danfoss.CheckFormulaTable" location="Siemens.DataLayer.Danfoss.CheckFormulaTable.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.ReadDatabase" location="Siemens.DataLayer.ReadDatabase.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.WriteDatabase" location="Siemens.DataLayer.WriteDatabase.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.DataTransform" location="Siemens.DataLayer.DataTransform.xml"/>
+                        <cm:FunctionBlock ref="Siemens.DataLayer.DataETL" location="Siemens.DataLayer.DataETL.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="interfaceProtocol">
+                        <cm:FunctionBlock ref="Interface.OPCUA.Manager" location="Interface.OPCUA.Manager.xml"/>
+                        <cm:FunctionBlock ref="Interface.ROS.Manager" location="Interface.ROS.Manager.xml"/>
+                        <cm:FunctionBlock ref="Interface.ProfiNET.Manager" location="Interface.ProfiNET.Manager.xml"/>
+                        <cm:FunctionBlock ref="Interface.MQTT.Manager" location="Interface.MQTT.Manager.xml"/>
+                        <cm:FunctionBlock ref="Interface.ModbusTCP.Manager" location="Interface.ModbusTCP.Manager.xml"/>
+                    </cm:Section>
+                    
+                    <cm:Section id="plcInstruction">
+                        <cm:FunctionBlock ref="Siemens.PLCInstruction.Danfoss.ReadDI" location="Siemens.PLCInstruction.Danfoss.ReadDI.xml"/>
+                        <cm:FunctionBlock ref="Siemens.PLCInstruction.Danfoss.ReadDO" location="Siemens.PLCInstruction.Danfoss.ReadDO.xml"/>
+                        <cm:FunctionBlock ref="Siemens.PLCInstruction.Danfoss.ReadAI" location="Siemens.PLCInstruction.Danfoss.ReadAI.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="readerSkill">
+                        <cm:FunctionBlock ref="Keyence.BarcodeSkill.ScanBarcode" location="Keyence.BarcodeSkill.ScanBarcode.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RFIDSkill.ScanRFID" location="Siemens.RFIDSkill.ScanRFID.xml"/>
+                        <cm:FunctionBlock ref="Siemens.HandheldSkill.ReadHandheld" location="Siemens.HandheldSkill.ReadHandheld.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="executorSkill">
+                        <cm:FunctionBlock ref="Atlas.TorqueWrenchSkill.ScrewFastening" isVest="true" location="Atlas.TorqueWrenchSkill.ScrewFastening.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="ioInstruction">
+                        <cm:FunctionBlock ref="System.IO.TriggerButton" location="System.IO.TriggerButton.xml"/>
+                        <cm:FunctionBlock ref="System.IO.TriggerLED" location="System.IO.TriggerLED.xml"/>
+                        <cm:FunctionBlock ref="System.IO.TriggerSwitch" location="System.IO.TriggerSwitch.xml"/>
+                        <cm:FunctionBlock ref="System.IO.ReadSensor" location="System.IO.ReadSensor.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="customRoboticSkill">
+                        <cm:FunctionBlock ref="Nachi.RoboticSkill.CustomSkill" location="Nachi.RoboticSkill.CustomSkill.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="roboticInstruction">
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.MoveLinear" isVest="true" location="Siemens.RoboticInstruction.Robotic.MoveLinear.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.MoveJoints" isVest="true" location="Siemens.RoboticInstruction.Robotic.MoveJoints.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.MoveCircular" isVest="true" location="Siemens.RoboticInstruction.Robotic.MoveCircular.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.ServoJ" isVest="true"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.ReadDI" isVest="true" location="Siemens.RoboticInstruction.Robotic.ReadDI.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.ReadDO" isVest="true" location="Siemens.RoboticInstruction.Robotic.ReadDO.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.WriteDO" isVest="true" location="Siemens.RoboticInstruction.Robotic.WriteDO.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.GetJointPosition" isVest="true" location="Siemens.RoboticInstruction.Robotic.GetJointPosition.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Robotic.GetTCPPosition" isVest="true" location="Siemens.RoboticInstruction.Robotic.GetTCPPosition.xml"/>
+                    </cm:Section>
+
+                    <!-- 
+                    <cm:Section id="roboticSkill">
+                        <cm:FunctionBlock ref="Siemens.RoboticSkill.PickAndPlace"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticSkill.ScrewFastening"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticSkill.Soldering"/>
+                    </cm:Section>
+                    -->
+
+                    <cm:Section id="endEffector">
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Gripper.GripperGrasp" isVest="true" location="Siemens.RoboticInstruction.Gripper.GripperGrasp.xml"/>
+                        <cm:FunctionBlock ref="Siemens.RoboticInstruction.Gripper.GripperOpen" isVest="true" location="Siemens.RoboticInstruction.Gripper.GripperOpen.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="transportationSkill">
+                        <cm:FunctionBlock ref="Siemens.AGVInstruction.AGV.AGVMove" isVest="true" location="Siemens.AGVInstruction.AGV.AGVMove.xml"/>
+                        <cm:FunctionBlock ref="Siemens.Logistics.Forklift.ForkliftMove" location="Siemens.Logistics.Forklift.ForkliftMove.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="computerPanelInstruction">
+                        <cm:FunctionBlock ref="System.ComputerInstruction.PressFunctionKey" location="System.ComputerInstruction.PressFunctionKey.xml"/>
+                        <cm:FunctionBlock ref="System.ComputerInstruction.ControlPanel.PanelButtonPressed" location="System.ComputerInstruction.ControlPanel.PanelButtonPressed.xml"/>
+                        <cm:FunctionBlock ref="System.ComputerInstruction.ControlPanel.ShowMessage" location="System.ComputerInstruction.ControlPanel.ShowMessage.xml"/>
+                        <cm:FunctionBlock ref="System.ComputerInstruction.ControlPanel.PopupAlarm" location="System.ComputerInstruction.ControlPanel.PopupAlarm.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="dynamicResource">
+                        <cm:FunctionBlock ref="System.Resource.Acquire" location="System.Resource.Acquire.xml"/>
+                        <cm:FunctionBlock ref="System.Resource.TryAcquire" location="System.Resource.TryAcquire.xml"/>
+                        <cm:FunctionBlock ref="System.Resource.Release" location="System.Resource.Release.xml"/>
+                        <cm:FunctionBlock ref="System.Resource.SetDefault" location="System.Resource.SetDefault.xml"/>
+                        <cm:FunctionBlock ref="System.Resource.GetResource" location="System.Resource.GetResource.xml"/>
+                    </cm:Section>
+
+                    <cm:Section id="userSkill">
+                    </cm:Section>
+
+                </cm:Library>
+
+            </cm:Content>
+        </cm:Data>
+        
+        <cm:Resource>
+            <cm:Content id="Resource.defaultFBLibraryIcon" type="Icon" format="SVG">PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9Ik91dGxpbmUiPjxwYXRoIGQ9Im00ODggNDE2aC04di0zNzZhOCA4IDAgMCAwIC04LThoLTQzMmE4IDggMCAwIDAgLTggOHYzNzZoLThhOCA4IDAgMCAwIC04IDh2MzJhOCA4IDAgMCAwIDggOGgyNHYyNGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTI0aDExMnYyNGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTI0aDExMnYyNGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTI0aDI0YTggOCAwIDAgMCA4LTh2LTMyYTggOCAwIDAgMCAtOC04em0tMTUyIDB2LTExMmgzMnY0MGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTQwaDMydjExMnptLTI0MC0xMTJoMzJ2MzJoLTMyem0tNDgtMTZ2LTExMmgzMnY0MGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTQwaDMydjExMnptNDgtMTEyaDMydjMyaC0zMnptOTYgMGgzMnY0MGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTQwaDMydjExMmgtMTI4em00OC0xMjhoMzJ2MzJoLTMyem0tOCA0OGg0OGE4IDggMCAwIDAgOC04di00MGgzMnYxMTJoLTEyOHYtMTEyaDMydjQwYTggOCAwIDAgMCA4IDh6bTggODBoMzJ2MzJoLTMyem0xNDQgMGgzMnYzMmgtMzJ6bS04IDQ4aDQ4YTggOCAwIDAgMCA4LTh2LTQwaDMydjExMmgtMTI4di0xMTJoMzJ2NDBhOCA4IDAgMCAwIDggOHptOCA4MGgzMnYzMmgtMzJ6bS0xNDQgMGgzMnYzMmgtMzJ6bS0xNiAwdjQwYTggOCAwIDAgMCA4IDhoNDhhOCA4IDAgMCAwIDgtOHYtNDBoMzJ2MTEyaC0xMjh2LTExMnptMjQwLTE0NGgtMTI4di0xMTJoMzJ2NDBhOCA4IDAgMCAwIDggOGg0OGE4IDggMCAwIDAgOC04di00MGgzMnptLTgwLTExMmgzMnYzMmgtMzJ6bS0yODggMGgzMnYzMmgtMzJ6bS0xNiAwdjQwYTggOCAwIDAgMCA4IDhoNDhhOCA4IDAgMCAwIDgtOHYtNDBoMzJ2MTEyaC0xMjh2LTExMnptLTMyIDI1NmgzMnY0MGE4IDggMCAwIDAgOCA4aDQ4YTggOCAwIDAgMCA4LTh2LTQwaDMydjExMmgtMTI4em00OCAxNzZoLTMydi0xNmgzMnptMTc2IDBoLTMydi0xNmgzMnptMTc2IDBoLTMydi0xNmgzMnptMzItMzJoLTQ0OHYtMTZoNDQ4eiIvPjxwYXRoIGQ9Im00MzIgMzg0aDE2djE2aC0xNnoiLz48cGF0aCBkPSJtMjg4IDM4NGgxNnYxNmgtMTZ6Ii8+PHBhdGggZD0ibTQzMiAyNTZoMTZ2MTZoLTE2eiIvPjxwYXRoIGQ9Im0yODggMjU2aDE2djE2aC0xNnoiLz48cGF0aCBkPSJtMTQ0IDM4NGgxNnYxNmgtMTZ6Ii8+PHBhdGggZD0ibTE0NCAyNTZoMTZ2MTZoLTE2eiIvPjxwYXRoIGQ9Im00MzIgMTI4aDE2djE2aC0xNnoiLz48cGF0aCBkPSJtMjg4IDEyOGgxNnYxNmgtMTZ6Ii8+PHBhdGggZD0ibTE0NCAxMjhoMTZ2MTZoLTE2eiIvPjwvZz48L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FBLibrary>
+
+</cm:CIMI>
+
+
+
+

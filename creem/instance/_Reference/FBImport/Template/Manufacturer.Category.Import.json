@@ -1,0 +1,14 @@
+{
+    "creemOpenness": {
+        "@version": "0.0.1",
+        "@lang": "en-US",
+        "items": [
+            {
+                "type": "FunctionBlock",
+                "name": "Manufacturer.Category.FBName",
+                "definitionBase64": "base64 of Manufacturer.Category.FBName.xml",
+                "codeBase64": "base64 of Manufacturer.Category.FBName.py"
+            }
+        ]
+    }
+}

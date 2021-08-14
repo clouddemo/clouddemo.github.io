@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Information Model (CIM) of IoT & Industrial Automation Engineering
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. All rights reserved.
+
+Type: Specification 
+Namespace: CREEM.Base
+Author: zhenhua.zhou@siemens.com
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bs="http://creem.siemens.com/schemas/base" targetNamespace="http://creem.siemens.com/schemas/base" elementFormDefault="qualified" attributeFormDefault="qualified" version="0.0.1">
+	<xs:annotation>
+		<xs:appinfo>CREEM.Base</xs:appinfo>
+		<xs:documentation xml:lang="en">
+            CREEM.Base : Define base parameter types of CREEM schemas.
+        </xs:documentation>
+	</xs:annotation>
+	<!-- CIM : MoM (Metadata of Metadata) -->
+	<xs:attribute name="schemaDesignPattern" type="bs:SchemaDesignPattern_Type"/>
+	<xs:attribute name="schemaState" type="bs:SchemaState_Type"/>
+	<xs:attribute name="schemaVersion" type="bs:SchemaVersion_Type"/>
+	<xs:simpleType name="SchemaDesignPattern_Type">
+		<xs:annotation>
+			<xs:documentation>General CIM schema Design Patterns in attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RussianDoll"/>
+			<xs:enumeration value="SalamiSlice"/>
+			<xs:enumeration value="VenetianBlind"/>
+			<xs:enumeration value="GardenofEden"/>
+			<xs:enumeration value="Hybrid"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SchemaState_Type">
+		<xs:annotation>
+			<xs:documentation>General CIM schema state in attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Initial"/>
+			<xs:enumeration value="SnapShot"/>
+			<xs:enumeration value="Released"/>
+			<xs:enumeration value="Archived"/>
+			<xs:enumeration value="Obsolete"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SchemaVersion_Type">
+		<xs:annotation>
+			<xs:documentation>General CIM schema internal version format. major.minor.update</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- CIM: General Schema Types -->
+	<xs:simpleType name="ProjectState_Type">
+		<xs:annotation>
+			<xs:documentation>Project version state</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Prototype"/>
+			<xs:enumeration value="PreAlpha"/>
+			<xs:enumeration value="Alpha"/>
+			<xs:enumeration value="Beta"/>
+			<xs:enumeration value="ReleaseCandidate"/>
+			<xs:enumeration value="GeneralAvailability"/>
+			<xs:enumeration value="SnapShot"/>
+			<xs:enumeration value="Eval"/>
+			<xs:enumeration value="OEM"/>
+			<xs:enumeration value="Retire"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- CREEM Type Inheritance System : Version 1.0 -->
+	<xs:simpleType name="ProgrammingLanguage_Type">
+		<xs:annotation>
+			<xs:documentation>Language of Choice</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PlainText"/>
+			<xs:enumeration value="Markdown"/>
+			<xs:enumeration value="Python"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="C++"/>
+			<xs:enumeration value="Lua"/>
+			<xs:enumeration value="JavaScript"/>
+			<xs:enumeration value="TypeScript"/>
+			<xs:enumeration value="C#"/>
+			<xs:enumeration value="Java"/>
+			<xs:enumeration value="Perl"/>
+			<xs:enumeration value="Go"/>
+			<xs:enumeration value="HTML"/>
+			<xs:enumeration value="CSS"/>
+			<xs:enumeration value="XML"/>
+			<xs:enumeration value="JSON"/>
+			<xs:enumeration value="YAML"/>
+			<xs:enumeration value="SCL"/>
+			<xs:enumeration value="WebAssembly"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CREEM_Weak_Type">
+		<xs:annotation>
+			<xs:documentation>TI System: Weak Types</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Any"/>
+			<xs:enumeration value="Bool"/>
+			<xs:enumeration value="String"/>
+			<xs:enumeration value="Number"/>
+			<xs:enumeration value="Array"/>
+			<xs:enumeration value="Matrix"/>
+			<xs:enumeration value="Enum"/>
+			<xs:enumeration value="DateTime"/>
+			<xs:enumeration value="Struct"/>
+			<xs:enumeration value="Ref"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CREEM_All_Type">
+		<xs:annotation>
+			<xs:documentation>TI System: All Types (Weak and Strong)</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Any" type="bs:cimReference"/>
+			<xs:element name="Bool" type="xs:string"/>
+			<xs:element name="String" type="xs:string"/>
+			<xs:group ref="bs:CREEM_StringGroup"/>
+			<xs:element name="Number" type="xs:string"/>
+			<xs:group ref="bs:CREEM_NumberGroup"/>
+			<xs:element name="Array" type="xs:string"/>
+			<xs:element name="Matrix" type="xs:string" minOccurs="0"/>
+			<xs:element name="Enum" type="xs:string"/>
+			<xs:element name="DateTime" type="bs:cimDateTime"/>
+			<xs:element name="Struct" type="bs:cimReference"/>
+			<xs:element name="Ref" type="bs:cimReference"/>
+		</xs:choice>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:group name="CREEM_NumberGroup">
+		<xs:choice>
+			<xs:element name="Integer" type="xs:string"/>
+			<xs:group ref="bs:CREEM_IntegerGroup"/>
+			<xs:element name="UInteger" type="xs:string"/>
+			<xs:group ref="bs:CREEM_UIntegerGroup"/>
+			<xs:element name="Float" type="xs:string"/>
+			<xs:element name="Double" type="xs:string"/>
+			<xs:element name="UNECE" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>UNECE.xml</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="CREEM_IntegerGroup">
+		<xs:choice>
+			<xs:element name="SByte" type="xs:string"/>
+			<xs:element name="Int16" type="xs:string"/>
+			<xs:element name="Int32" type="xs:string"/>
+			<xs:element name="Int64" type="xs:string"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="CREEM_UIntegerGroup">
+		<xs:choice>
+			<xs:element name="Byte" type="xs:string"/>
+			<xs:element name="UInt16" type="xs:string"/>
+			<xs:element name="UInt32" type="xs:string"/>
+			<xs:element name="StatusCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>StatusCode.xml</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UInt64" type="xs:string"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="CREEM_StringGroup">
+		<xs:choice>
+			<xs:element name="QualifiedName" type="xs:string"/>
+			<xs:element name="LocalizedText" type="xs:string"/>
+			<xs:element name="Namespace" type="xs:string"/>
+			<xs:element name="URI" type="xs:string"/>
+			<xs:element name="Version" type="bs:Version_Type"/>
+			<xs:element name="UUID" type="bs:UUID_Type"/>
+			<xs:element name="Email" type="bs:Email_Type"/>
+		</xs:choice>
+	</xs:group>
+	<xs:simpleType name="Version_Type">
+		<xs:annotation>
+			<xs:documentation>String.Version : major.minor[.update]</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]+\.[0-9]+(\.[0-9]+)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UUID_Type">
+		<xs:annotation>
+			<xs:documentation>String.UUID</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Email_Type">
+		<xs:annotation>
+			<xs:documentation>String.Email</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Extended "CIM Base Types" (cim prefix) below are only for elements (and related) definition in CIM schema. -->
+	<xs:complexType name="cimAnySimpleType">
+		<xs:simpleContent>
+			<xs:extension base="xs:anySimpleType">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimString">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimDecimal">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimAnyURI">
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimReference">
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="cimDateTime">
+		<xs:choice>
+			<xs:element name="LocalDateTime" type="xs:string" nillable="true"/>
+			<xs:element name="Interval" type="xs:duration"/>
+			<xs:element name="Date" type="xs:date"/>
+			<xs:element name="Time" type="xs:time"/>
+			<xs:element name="DateTime" type="xs:dateTime"/>
+		</xs:choice>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="cimUnsignedByte">
+		<xs:simpleContent>
+			<xs:extension base="xs:unsignedByte">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimByte">
+		<xs:simpleContent>
+			<xs:extension base="xs:byte">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimUnsignedShort">
+		<xs:simpleContent>
+			<xs:extension base="xs:unsignedShort">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimShort">
+		<xs:simpleContent>
+			<xs:extension base="xs:short">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimUnsignedInt">
+		<xs:simpleContent>
+			<xs:extension base="xs:unsignedInt">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimInt">
+		<xs:simpleContent>
+			<xs:extension base="xs:int">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimUnsignedLong">
+		<xs:simpleContent>
+			<xs:extension base="xs:unsignedLong">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimLong">
+		<xs:simpleContent>
+			<xs:extension base="xs:long">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimBoolean">
+		<xs:simpleContent>
+			<xs:extension base="xs:boolean">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimFloat">
+		<xs:simpleContent>
+			<xs:extension base="xs:float">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimDouble">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimBase64Binary">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="cimHexBinary">
+		<xs:simpleContent>
+			<xs:extension base="xs:hexBinary">
+				<xs:anyAttribute namespace="##any" processContents="lax"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!-- Attribute Types -->
+	<xs:simpleType name="Language_AttributeType">
+		<xs:annotation>
+			<xs:documentation>ISO639_ISO3166</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="en-US"/>
+			<xs:enumeration value="zh-CN"/>
+			<!-- TBA -->
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

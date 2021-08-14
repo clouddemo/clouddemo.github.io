@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.DataLayer.Danfoss.ReadMES">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>ReadMES</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Read MES</cm:DisplayName>
+                <cm:Description/>
+                <cm:Category type="DataLayer" displayName="Data Layer"/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>读取MES</cm:DisplayName>
+                <cm:Description/>
+                <cm:Category type="DataLayer" displayName="数据中台"/>
+                <cm:Input>
+                    <cm:Port id="connectString" displayName="连接字符串"/>
+                    <cm:Port id="tableName" displayName="表名"/>
+                    <cm:Port id="readMode" displayName="读取模式"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="table" displayName="表"/>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="DataLayer"/>
+
+                <cm:Input>
+                    <cm:Port id="connectString" type="String" defaultValue=""/>
+                    <cm:Port id="tableName" type="String" defaultValue=""/>
+                    <cm:Port id="readMode" type="String" defaultValue=""/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="table" type="String"/>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPnJlYWQtbWVzPC90aXRsZT4KICAgIDxnIGlkPSJyZWFkLW1lcyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTk2Ljc3Nzc2ODksNiBMMTguMTY2MTExNCw2IEMxMS45OTM4ODg2LDYgNy4wNTYxMTExNiwxMS4wNTAwMDUyIDcuMDU2MTExMTYsMTcuMjIyMjMwNyBMNyw5NS43Nzc3Nzg0IEM3LDEwMS45NSAxMS45OTM4ODg2LDEwNyAxOC4xNjYxMTE0LDEwNyBMOTYuNzc3NzY4OSwxMDcgQzEwMi45NDk5OTUsMTA3IDEwOCwxMDEuOTUgMTA4LDk1Ljc3Nzc3ODQgTDEwOCwxNy4yMjIyMzA3IEMxMDgsMTEuMDUwMDA1MiAxMDIuOTQ5OTk1LDYgOTYuNzc3NzY4OSw2IFogTTk3LDczLjE1Mzg0NzMgTDc0LjQ0NDY5MDUsNzMuMTUzODQ3MyBDNzQuNDQ0NjkwNSw4Mi40NzUzODM2IDY2Ljg4ODY1NzEsOTAgNTcuNTI4MjAxMyw5MCBDNDguMTY3NzQ1NCw5MCA0MC42MTE3MTIsODIuNDc1MzgzNiA0MC42MTE3MTIsNzMuMTUzODQ3MyBMMTgsNzMuMTUzODQ3MyBMMTgsMTcgTDk3LDE3IEw5Nyw3My4xNTM4NDczIFogTTgwLDQ2LjI4NTcxNjMgTDY4Ljc1MDAwMzYsNDYuMjg1NzE2MyBMNjguNzUwMDAzNiw2MyBMNDYuMjQ5OTk2NCw2MyBMNDYuMjQ5OTk2NCw0Ni4yODU3MTYzIEwzNSw0Ni4yODU3MTYzIEw1Ny41LDI0IEw4MCw0Ni4yODU3MTYzIFoiIGlkPSJGaWxsLTEiIGZpbGw9IiMzQzUyQTUiPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

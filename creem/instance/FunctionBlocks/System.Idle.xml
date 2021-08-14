@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="System.Idle">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>Idle</cm:Name>
+            <cm:Version>1.0.1</cm:Version>
+            <cm:Description/>
+            <cm:UUID>c16fd521-4038-423c-9efc-6108c7a2a970</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Idle</cm:DisplayName>
+                <cm:Description>Default idle function block that can be a placeholder</cm:Description>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>空闲</cm:DisplayName>
+                <cm:Description>缺省空闲功能块，用作可被替换的占位符</cm:Description>
+                <cm:Input>
+                    <cm:Port id="duration" displayName="持续时间"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="Idle"/>
+                <cm:Input>
+                    <cm:Port id="duration" type="UNECE" unit="s" defaultValue="0"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" type="StatusCode" defaultValue="Good"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmlkbGU8L3RpdGxlPgogICAgPGcgaWQ9ImlkbGUiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik0xMSwxNy42NjY2NjY3IEwxMSwzOSBMMjEuNjY2NjcsMzkgTDIxLjY2NjY3LDE3LjY2NjY2NjcgTDQzLDE3LjY2NjY2NjcgTDQzLDcgTDIxLjY2NjY3LDcgQzE1LjgwMDAwMTQsNyAxMSwxMS44IDExLDE3LjY2NjY2NjcgWiBNMjEuNjY2NjcsNzEgTDExLDcxIEwxMSw5Mi4zMzMzMzMzIEMxMSw5OC4yIDE1LjgwMDAwMTQsMTAzIDIxLjY2NjY3LDEwMyBMNDMsMTAzIEw0Myw5Mi4zMzMzMzMzIEwyMS42NjY2Nyw5Mi4zMzMzMzMzIEwyMS42NjY2Nyw3MSBaIE05Ni4zMzMzMzMzLDkyLjMzMzMzMzMgTDc1LDkyLjMzMzMzMzMgTDc1LDEwMyBMOTYuMzMzMzMzMywxMDMgQzEwMi4yLDEwMyAxMDcsOTguMiAxMDcsOTIuMzMzMzMzMyBMMTA3LDcxIEw5Ni4zMzMzMzMzLDcxIEw5Ni4zMzMzMzMzLDkyLjMzMzMzMzMgWiBNOTYuMzMzMzMzMyw3IEw3NSw3IEw3NSwxNy42NjY2NjY3IEw5Ni4zMzMzMzMzLDE3LjY2NjY2NjcgTDk2LjMzMzMzMzMsMzkgTDEwNywzOSBMMTA3LDE3LjY2NjY2NjcgQzEwNywxMS44IDEwMi4yLDcgOTYuMzMzMzMzMyw3IFoiIGlkPSJGaWxsLTEiIGZpbGw9IiM4Nzg3ODciPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

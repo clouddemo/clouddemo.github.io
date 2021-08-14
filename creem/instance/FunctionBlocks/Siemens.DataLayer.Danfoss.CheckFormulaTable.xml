@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.DataLayer.Danfoss.CheckFormulaTable">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>CheckFormulaTable</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Check Formula Table</cm:DisplayName>
+                <cm:Description/>
+                <cm:Category type="DataLayer" displayName="Data Layer"/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>查询配方表</cm:DisplayName>
+                <cm:Description/>
+                <cm:Category type="DataLayer" displayName="数据中台"/>
+                <cm:Input>
+                    <cm:Port id="barcode" displayName="条形码"/>
+                    <cm:Port id="table" displayName="表"/>
+                    <cm:Port id="mode" displayName="模式"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="result" displayName="结果"/>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="DataLayer"/>
+
+                <cm:Input>
+                    <cm:Port id="barcode" type="String" defaultValue=""/>
+                    <cm:Port id="table" type="String" defaultValue=""/>
+                    <cm:Port id="mode" type="String" defaultValue=""/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="result" type="String"/>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmRhdGEtbGF5ZXI8L3RpdGxlPgogICAgPGcgaWQ9ImRhdGEtbGF5ZXIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik05OS41OTk5ODk3LDE0IEwxNi4zOTk5OTk5LDE0IEMxMC42Mjc5OTk1LDE0IDYuMDUxOTk5OTYsMTguNjE2ODc5IDYuMDUxOTk5OTYsMjQuMzc1MDEwMSBMNiw4Ni42MjUwMDE2IEM2LDkyLjM4MzEyNSAxMC42Mjc5OTk1LDk3IDE2LjM5OTk5OTksOTcgTDk5LjU5OTk4OTcsOTcgQzEwNS4zNzE5OTYsOTcgMTEwLDkyLjM4MzEyNSAxMTAsODYuNjI1MDAxNiBMMTEwLDI0LjM3NTAxMDEgQzExMCwxOC42MTY4NzkgMTA1LjM3MTk5NiwxNCA5OS41OTk5ODk3LDE0IFogTTk5LDg3IEwxNiw4NyBMMTYsNTYgTDk5LDU2IEw5OSw4NyBaIE05OSwzNSBMMTYsMzUgTDE2LDI1IEw5OSwyNSBMOTksMzUgWiIgaWQ9IkZpbGwtMSIgZmlsbD0iIzQxNTE5RiI+PC9wYXRoPgogICAgPC9nPgo8L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="Siemens.AGVInstruction.AGV.AGVMove">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>AGVMove</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a95ba99e-ee62-4031-9bdd-b0c13bb08f62</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>AGV Move</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+                <cm:Dialog location="index.html"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>AGV小车移动</cm:DisplayName>
+                <cm:Description/>
+                <cm:Input>
+                    <cm:Port id="station" displayName="站点"/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" displayName="状态码"/>
+                </cm:Output>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="AGV">
+                    <cm:DeviceDescription ref="AGV.Unknown"/>
+                    <cm:DeviceDescription ref="AGV.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="station" type="String" defaultValue=""/>
+                </cm:Input>
+                <cm:Output>
+                    <cm:Port id="status" type="StatusCode"/>
+                </cm:Output>
+
+                <cm:Error>
+                    <cm:StatusCode id="BadTimeout"/>
+                    <cm:StatusCode id="DeviceOverheat" isCustomized="true"/>
+                    <cm:StatusCode id="SystemCollapse" isCustomized="true"/>
+                </cm:Error>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPmFndi1tb3ZlPC90aXRsZT4KICAgIDxnIGlkPSJhZ3YtbW92ZSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Iue8lue7hCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAuMDAwMDAwLCAxMy4wMDAwMDApIj4KICAgICAgICAgICAgPHBhdGggZD0iTTQuNTMwMTg0MjQsNzAgQzUuNjI2ODIyMTksNjAuMTU2MzU4OSAxNC4wMzczMjYsNTIuNSAyNC4yNDk5OTU5LDUyLjUgQzM0LjQ2MjY3OSw1Mi41IDQyLjg3MzE4NjEsNjAuMTU2MzU4OSA0My45Njk4MTU4LDcwIEw1My4wMzAxODQyLDcwIEM1NC4xMjY4MzA0LDYwLjE1NjM1ODkgNjIuNTM3MzIxLDUyLjUgNzIuNzUwMDA0MSw1Mi41IEM4Mi45NjI2NzA3LDUyLjUgOTEuMzczMTc3OCw2MC4xNTYzNTg5IDkyLjQ2OTgyNCw3MCBMOTQuNzk1NDU0OSw3MCBDOTYuMDEyOTg4Nyw3MCA5Nyw2OS4wMjA2MjAzIDk3LDY3LjgxMjUwMDUgTDk3LDIuMTg3NDk5NDkgQzk3LDAuOTc5Mzc5NzQxIDk2LjAxMjk4ODcsMCA5NC43OTU0NTQ5LDAgTDIuMjA0NTQ1MDgsMCBDMC45ODcwMDgwMywwIDAsMC45NzkzNzk3NDEgMCwyLjE4NzQ5OTQ5IEwwLDY3LjgxMjUwMDUgQzAsNjkuMDIwNjIwMyAwLjk4NzAwODAzLDcwIDIuMjA0NTQ1MDgsNzAgTDQuNTMwMTg0MjQsNzAgWiIgaWQ9IkZpbGwtMSIgZmlsbD0iIzAwOTk5OSI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNC41MzA4NDE2OSw3MCBDNS42MjYzNzM0NCw2MC4xNTYzNDc0IDE0LjAzNzAxNjgsNTIuNTAwMDgyIDI0LjI1MDQxMzEsNTIuNTAwMDgyIEMzNC40NjIxNTcsNTIuNTAwMDgyIDQyLjg3MjgwMDQsNjAuMTU2MzQ3NCA0My45Njk5ODQ1LDcwIEw1My4wMzAwMTU1LDcwIEM1NC4xMjcxOTk2LDYwLjE1NjM0NzQgNjIuNTM3ODQzLDUyLjUwMDA4MiA3Mi43NTEyMzkzLDUyLjUwMDA4MiBDODIuOTYyOTgzMiw1Mi41MDAwODIgOTEuMzczNjI2Niw2MC4xNTYzNDc0IDkyLjQ3MDgxMDcsNzAgTDk0Ljc5NTcxNzQsNzAgQzk2LjAxMzUyNTcsNzAgOTcsNjkuMDIwNjY4MyA5Nyw2Ny44MTI2MTI3IEw5NywyLjE4NzU1MTI0IEM5NywwLjk3OTMzMTcgOTYuMDEzNTI1NywwIDk0Ljc5NTcxNzQsMCBMMi4yMDQyODI1NywwIEMwLjk4NjQ3NDI4NiwwIDAsMC45NzkzMzE3IDAsMi4xODc1NTEyNCBMMCw2Ny44MTI2MTI3IEMwLDY5LjAyMDY2ODMgMC45ODY0NzQyODYsNzAgMi4yMDQyODI1Nyw3MCBMNC41MzA4NDE2OSw3MCBaIiBpZD0iU3Ryb2tlLTMiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTM0LjA0NTkyNTEsNjEuOTU0MDc0NiBDMzkuMzE4MDI1LDY3LjIyNjE0MDQgMzkuMzE4MDI1LDc1Ljc3Mzg1NTQgMzQuMDQ1OTI1MSw4MS4wNDU5MjYyIEMyOC43NzM4NTg5LDg2LjMxODAyNDYgMjAuMjI2MTUxNyw4Ni4zMTgwMjQ2IDE0Ljk1NDA2ODYsODEuMDQ1OTI2MiBDOS42ODE5NzcxMyw3NS43NzM4NTU0IDkuNjgxOTc3MTMsNjcuMjI2MTQwNCAxNC45NTQwNjg2LDYxLjk1NDA3NDYgQzIwLjIyNjE1MTcsNTYuNjgxOTc1MSAyOC43NzM4NTg5LDU2LjY4MTk3NTEgMzQuMDQ1OTI1MSw2MS45NTQwNzQ2IiBpZD0iRmlsbC00IiBmaWxsPSIjMDA5OTk5Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNC4wNDYxMjc0LDYxLjk1Mzk5MjkgQzM5LjMxNzk1NzUsNjcuMjI2MTUyMSAzOS4zMTc5NTc1LDc1Ljc3Mzg5MDEgMzQuMDQ2MTI3NCw4MS4wNDU4ODA2IEMyOC43NzQyOTczLDg2LjMxODAzOTggMjAuMjI3Mzg5MSw4Ni4zMTgwMzk4IDE0Ljk1Mzg3MjYsODEuMDQ1ODgwNiBDOS42ODIwNDI0Nyw3NS43NzM4OTAxIDkuNjgyMDQyNDcsNjcuMjI2MTUyMSAxNC45NTM4NzI2LDYxLjk1Mzk5MjkgQzIwLjIyNzM4OTEsNTYuNjgyMDAyNCAyOC43NzQyOTczLDU2LjY4MjAwMjQgMzQuMDQ2MTI3NCw2MS45NTM5OTI5IiBpZD0iU3Ryb2tlLTUiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTgyLjA0NTkyNiw2MS45NTQwNzQ2IEM4Ny4zMTgwMjQ3LDY3LjIyNjE0MDQgODcuMzE4MDI0Nyw3NS43NzM4NTU0IDgyLjA0NTkyNiw4MS4wNDU5MjYyIEM3Ni43NzM4NjEsODYuMzE4MDI0NiA2OC4yMjYxMzksODYuMzE4MDI0NiA2Mi45NTQwNzQsODEuMDQ1OTI2MiBDNTcuNjgxOTc1Myw3NS43NzM4NTU0IDU3LjY4MTk3NTMsNjcuMjI2MTQwNCA2Mi45NTQwNzQsNjEuOTU0MDc0NiBDNjguMjI2MTM5LDU2LjY4MTk3NTEgNzYuNzczODYxLDU2LjY4MTk3NTEgODIuMDQ1OTI2LDYxLjk1NDA3NDYiIGlkPSJGaWxsLTYiIGZpbGw9IiMwMDk5OTkiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTgyLjA0NjEyNzQsNjEuOTUzOTkyOSBDODcuMzE3OTU3NSw2Ny4yMjYxNTIxIDg3LjMxNzk1NzUsNzUuNzczODkwMSA4Mi4wNDYxMjc0LDgxLjA0NTg4MDYgQzc2Ljc3NDI5NzMsODYuMzE4MDM5OCA2OC4yMjU3MDI3LDg2LjMxODAzOTggNjIuOTUzODcyNiw4MS4wNDU4ODA2IEM1Ny42ODIwNDI1LDc1Ljc3Mzg5MDEgNTcuNjgyMDQyNSw2Ny4yMjYxNTIxIDYyLjk1Mzg3MjYsNjEuOTUzOTkyOSBDNjguMjI1NzAyNyw1Ni42ODIwMDI0IDc2Ljc3NDI5NzMsNTYuNjgyMDAyNCA4Mi4wNDYxMjc0LDYxLjk1Mzk5MjkiIGlkPSJTdHJva2UtNyI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>

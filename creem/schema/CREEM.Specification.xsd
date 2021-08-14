@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Information Model (CIM) of IoT & Industrial Automation Engineering
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. All rights reserved.
+
+Type: Specification 
+Namespace: CREEM.Specification
+Author: zhenhua.zhou@siemens.com
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bs="http://creem.siemens.com/schemas/base" xmlns:cim="http://creem.siemens.com/schemas/cim" xmlns:cm="http://creem.siemens.com/schemas/creem" xmlns="http://creem.siemens.com/schemas/creem" targetNamespace="http://creem.siemens.com/schemas/creem" elementFormDefault="qualified" attributeFormDefault="qualified" version="0.0.5">
+	<xs:annotation>
+		<xs:appinfo>CREEM.Specification</xs:appinfo>
+		<xs:documentation xml:lang="en">
+            CREEM.Specification : Define all specifications of CREEM schemas.
+        </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://creem.siemens.com/schemas/base" schemaLocation="CREEM.Base.xsd"/>
+	<!-- Sub Sections -->
+	<!-- <xs:include schemaLocation="SubSections.xsd" /> -->
+	<!-- Root CIMI element -->
+	<xs:element name="CIMI" type="cm:CREEM_CIMI_Type"/>
+	<xs:complexType name="CREEM_CIMI_Type">
+		<xs:annotation>
+			<xs:documentation>CIMI Root (CREEM)</xs:documentation>
+		</xs:annotation>
+		<xs:choice maxOccurs="unbounded">
+			<xs:element ref="Project" minOccurs="0"/>
+			<xs:element ref="FunctionBlock" minOccurs="0"/>
+			<xs:element ref="FBLibrary" minOccurs="0"/>
+			<xs:element ref="Workflow" minOccurs="0"/>
+			<xs:element ref="DeviceDescription" minOccurs="0"/>
+			<xs:element ref="Communication" minOccurs="0"/>
+			<xs:element ref="DeviceLibrary" minOccurs="0"/>
+			<xs:element ref="SystemConfiguration" minOccurs="0"/>
+			<xs:element ref="Visualization3D" minOccurs="0"/>
+			<xs:element ref="WorkcellMicroservice" minOccurs="0"/>
+		</xs:choice>
+		<xs:attribute ref="bs:schemaDesignPattern"/>
+		<xs:attribute name="state" type="bs:SchemaState_Type"/>
+		<xs:attribute name="version" type="bs:SchemaVersion_Type"/>
+		<xs:attribute name="lang" type="xs:language"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<!-- CREEM elements -->
+	<xs:element name="Project" type="cm:Project_Type"/>
+	<xs:complexType name="Project_Type">
+		<xs:annotation>
+			<xs:documentation>CREEM Project</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="SystemConfiguration" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="Workflow" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:element name="FunctionBlock" type="cm:CIM_Type"/>
+	<xs:element name="FBLibrary" type="cm:CIM_Type"/>
+	<xs:element name="Workflow" type="cm:CIM_Type"/>
+	<xs:element name="DeviceDescription" type="cm:CIM_Type"/>
+	<xs:element name="Communication" type="cm:CIM_Type"/>
+	<xs:element name="DeviceLibrary" type="cm:CIM_Type"/>
+	<xs:element name="SystemConfiguration" type="cm:CIM_Type"/>
+	<xs:element name="Visualization3D" type="cm:CIM_Type"/>
+	<xs:element name="WorkcellMicroservice" type="cm:CIM_Type"/>
+	<xs:complexType name="CIM_Type">
+		<xs:annotation>
+			<xs:documentation>CIM Root Structure</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Metadata" type="cm:Metadata_Type"/>
+			<xs:element name="UIInformation" type="cm:UIInformation_Type" nillable="true" minOccurs="0"/>
+			<xs:element name="Data" type="cm:Data_Type" nillable="true"/>
+			<xs:element name="Resource" type="cm:Resource_Type" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="Metadata_Type" block="#all">
+		<xs:annotation>
+			<xs:documentation>Metadata section of CIM. It's mandatory.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Namespace" type="bs:cimString"/>
+			<xs:element name="Name" type="bs:cimString"/>
+			<xs:element name="Version" type="bs:SchemaVersion_Type" default="1.0.0"/>
+			<xs:element name="Description" type="bs:cimString" nillable="true"/>
+			<xs:element name="UUID" type="bs:UUID_Type" nillable="true"/>
+			<xs:element name="InstanceURI" type="bs:cimAnyURI" default="http://creem.siemens.com/instances" nillable="true" minOccurs="0"/>
+			<xs:element name="Structure" type="cm:Metadata_StructureSchema_Type" minOccurs="0"/>
+			<xs:element name="Organization" type="cm:Metadata_Organization_Type" minOccurs="0"/>
+			<xs:element name="Certification" type="cm:DigitalSignatureX509_Type" minOccurs="0"/>
+			<xs:choice/>
+		</xs:sequence>
+		<xs:attribute name="state" type="bs:ProjectState_Type" default="PreAlpha"/>
+		<xs:attribute name="revision" type="xs:int" default="0"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="Metadata_StructureSchema_Type">
+		<xs:annotation>
+			<xs:documentation>Namespace and schema URI of the CIMI</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="StructureNamespace" type="bs:cimString" default="CIM"/>
+			<xs:element name="StructureSchemaURI" type="bs:cimAnyURI" default="http://creem.siemens.com/schemas/creem" minOccurs="0"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="Metadata_Organization_Type">
+		<xs:annotation>
+			<xs:documentation>Organization who owns the CIMI</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OrganizationName" type="bs:cimString" default="Siemens AG."/>
+			<xs:choice>
+				<xs:element name="DigitalSignature" type="bs:cimString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="DigitalSignatureX509" type="cm:DigitalSignatureX509_Type" minOccurs="0" maxOccurs="1"/>
+			</xs:choice>
+			<xs:element name="Authors" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Name" type="bs:cimString"/>
+						<xs:element name="Email" type="bs:Email_Type" default="firstname.lastname@company.com" minOccurs="0"/>
+						<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:anyAttribute namespace="##any" processContents="lax"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="DigitalSignatureX509_Type">
+		<xs:annotation>
+			<xs:documentation>Type to indicate that CIMI has been digitally signed. Any manual change to the CIMI will invalidate the signature.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Signer" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Signer name of the certificate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SignedUtcTime" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The UTC timestamp of the signature.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="X509Certificate" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>The public part of the X509 certificate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UIInformation_Type" block="#all">
+		<xs:annotation>
+			<xs:documentation>UI Information section is only for all information needed by UI. It must be isolated with real data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identification" type="bs:cimReference" minOccurs="0"/>
+			<xs:element name="Content" type="bs:cimReference"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="cm:UIInformation_Type_AttributeType_Type" default="Default"/>
+		<xs:attribute name="revision" type="xs:int" default="0"/>
+		<xs:attribute name="version" type="bs:Version_Type" default="1.0.0"/>
+		<xs:attribute name="description" type="xs:string" default="0"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="UIInformation_Type_AttributeType_Type">
+		<xs:annotation>
+			<xs:documentation>General CIM schema state in attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Default"/>
+			<xs:enumeration value="Package"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- <xs:element name="Data" type="cm:Data_Type" nillable="true" /> -->
+	<xs:complexType name="Data_Type" block="#all">
+		<xs:annotation>
+			<xs:documentation>Data section of CIM.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identification" type="bs:cimReference" minOccurs="0"/>
+			<xs:element name="Content" type="bs:cimReference"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="cm:Data_Type_AttributeType" use="required" fixed="Tree"/>
+		<xs:attribute name="revision" type="xs:int" default="0"/>
+		<xs:attribute name="version" type="bs:Version_Type" default="1.0"/>
+		<xs:attribute name="description" type="xs:string" default="0"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="Data_Type_AttributeType">
+		<xs:annotation>
+			<xs:documentation>General CIM schema state in attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="List"/>
+			<xs:enumeration value="Tree"/>
+			<xs:enumeration value="DirectGraph"/>
+			<xs:enumeration value="Semantic"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Resource_Type" block="#all">
+		<xs:annotation>
+			<xs:documentation>Resource section of CIM.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Content" type="bs:cimReference"/>
+		</xs:sequence>
+		<xs:attribute name="revision" type="xs:int" default="0"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="Resource_Type_AttributeType">
+		<xs:annotation>
+			<xs:documentation>General CIM schema state in attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="General"/>
+			<xs:enumeration value="SourceCode"/>
+			<xs:enumeration value="Icon"/>
+			<xs:enumeration value="Binary"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Content_Type" block="#all">
+		<xs:annotation>
+			<xs:documentation>CREEM Contents</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="lang" type="bs:Language_AttributeType" default="en-US"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="Content_UIInformation_Type">
+		<xs:complexContent>
+			<xs:extension base="cm:Content_Type">
+				<xs:sequence>
+					<xs:element name="DisplayName" type="bs:cimString"/>
+					<xs:element name="Description" type="bs:cimString" minOccurs="0"/>
+					<xs:element name="Icon" type="bs:cimString" minOccurs="0"/>
+					<xs:element name="Diagram" type="bs:cimString" minOccurs="0"/>
+					<xs:element name="Dialog" type="bs:cimString" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- LCP Workflow Elements -->
+	<xs:complexType name="LCP_Workflow_Type">
+		<xs:annotation>
+			<xs:documentation>Low-Code Paradim (LCP) Workflow</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Start" type="xs:string" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="LCP_General_Group"/>
+				<xs:element name="Condition" type="xs:string"/>
+				<xs:group ref="LCP_Compositor_Group"/>
+				<xs:group ref="LCP_Decorator_Group"/>
+				<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:element name="End" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="LCP_FiniteStateMachine_Type">
+		<xs:annotation>
+			<xs:documentation>LCP Finite State Machine (FSM)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="State" type="cm:BehaviorForest_FSM_Enum"/>
+			<xs:element name="LastState" type="cm:BehaviorForest_FSM_Enum" minOccurs="0"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="BehaviorForest_FSM_Enum">
+		<xs:annotation>
+			<xs:documentation>Behavior Forest - FSM</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IDLE"/>
+			<xs:enumeration value="RUNNING"/>
+			<xs:enumeration value="OK"/>
+			<xs:enumeration value="FAILED"/>
+			<xs:enumeration value="PAUSE"/>
+			<xs:enumeration value="RESUME"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:group name="LCP_General_Group">
+		<xs:choice>
+			<xs:element name="FBInstance" type="xs:string"/>
+			<xs:element name="Idle" type="xs:string"/>
+			<xs:element name="Manual" type="xs:string"/>
+			<xs:element name="Delay" type="xs:string"/>
+			<xs:element name="Goto" type="xs:string"/>
+			<xs:element name="Stop" type="xs:string"/>
+			<xs:element name="Abort" type="xs:string"/>
+			<xs:element name="ErrorManager" type="xs:string"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="LCP_Compositor_Group">
+		<xs:choice>
+			<xs:element name="Sequence" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Parallel" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Priority" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="If" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Switch" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="LCP_Decorator_Group">
+		<xs:choice>
+			<xs:element name="Repeat" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="While" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Timeout" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Retry" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="IQC" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Guard" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OneShot" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:group>
+	<!-- Attributes -->
+	<xs:attribute name="documentLanguage" type="bs:Language_AttributeType"/>
+	<xs:attribute name="documentEncoding" type="xs:string"/>
+</xs:schema>

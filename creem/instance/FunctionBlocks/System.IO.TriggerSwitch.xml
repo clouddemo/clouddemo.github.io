@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Common Runtime-Engineering Exchange Model (CREEM)
+Copyright © 2021 Siemens AG. Advanta. All rights reserved.
+
+ * Siemens AG. MIT License 1.0
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+
+CoreNamespace: CREEM.FB.Definition
+Contact: zhenhua.zhou@siemens.com
+
+    xsi:schemaLocation="http://creem.siemens.com/schemas/creem/fb" 
+    xsi:noNamespaceSchemaLocation="..\Schemas\CREEM_FunctionBlock.xsd"
+-->
+
+<cm:CIMI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:bs="http://creem.siemens.com/schemas/base" 
+         xmlns:cim="http://creem.siemens.com/schemas/cim" 
+         xmlns:cm="http://creem.siemens.com/schemas/creem"
+         xmlns="http://creem.siemens.com/schemas/creem"
+         state="Alpha" version="0.0.1" lang="en-US">
+    
+    <cm:FunctionBlock id="System.IO.TriggerSwitch">
+        <cm:Metadata>
+            <cm:Namespace>CREEM.FB.{id}</cm:Namespace>
+            <cm:NamespaceURI/>
+            <cm:Name>TriggerSwitch</cm:Name>
+            <cm:Version>1.0.0</cm:Version>
+            <cm:Description/>
+            <cm:UUID>a2651224-a59c-4e0f-849f-8a6f63dc2372</cm:UUID>
+            <cm:Certification>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>4da511737012bb873752306ecb672dd962deace3</cm:DigitalSignature>
+            </cm:Certification>
+            <cm:Organization>
+                <cm:OrganizationName>Siemens AG.</cm:OrganizationName>
+                <cm:DigitalSignature>0d94bbe1e7011545d1d094fa419af8e8ff93d123</cm:DigitalSignature>
+            </cm:Organization>
+        </cm:Metadata>
+        
+        <cm:UIInformation>
+            <!-- ISO639_ISO3166 -->
+            <cm:Content lang="en-US">
+                <cm:DisplayName>Trigger Switch</cm:DisplayName>
+                <cm:Description/>
+                <cm:Icon ref="Resource.defaultIcon"/>
+                <cm:Diagram location="{id}.json"/>
+            </cm:Content>
+            <cm:Content lang="zh-CN">
+                <cm:DisplayName>触发开关</cm:DisplayName>
+                <cm:Description/>
+                <cm:Input>
+                    <cm:Port id="port" displayName="引脚"/>
+                    <cm:Port id="mode" displayName="模式"/>
+                </cm:Input>
+            </cm:Content>
+        </cm:UIInformation>
+
+        <cm:Data>
+            <cm:Content>
+                <cm:Executor location="{id}.py"/>
+                <cm:Category type="LogicalNode"/>
+                <cm:PhysicalNode type="RadioButton">
+                    <cm:DeviceDescription ref="IO.RadioButton.*"/>
+                </cm:PhysicalNode>
+
+                <cm:Input>
+                    <cm:Port id="port" type="String" defaultValue="I0.0"/>
+                    <cm:Port id="mode" type="String"/>
+                </cm:Input>
+                <cm:Output/>
+            </cm:Content>
+        </cm:Data>
+
+        <cm:Resource>
+            <cm:Content id="Resource.defaultIcon" type="Icon" format="SVG">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTE2cHgiIGhlaWdodD0iMTEycHgiIHZpZXdCb3g9IjAgMCAxMTYgMTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPnRyaWdnZXItc3dpdGNoPC90aXRsZT4KICAgIDxkZWZzPgogICAgICAgIDxwYXRoIGQ9Ik03My4wMDAwNzk0LDI0LjYyNzQ1MSBMNDIuOTk5OTIwNiwyNC42Mjc0NTEgQzQxLjk5OTkyODUsMjQuNjI3NDUxIDQxLjMzMzMzMzMsMjUuMjg3ODUzMiA0MS4zMzMzMzMzLDI2LjI3ODU1NDkgTDQxLjMzMzMzMzMsNTYgQzQxLjMzMzMzMzMsNTYuMjkyMTM1IDQxLjM5MjcwNTQsNTYuNTU0NTY0OCA0MS40OTk5MzI1LDU2Ljc4MDc5NzMgTDQxLjQ5OTkzMjUsODUuNzIxNDQ1MSBDNDEuNDk5OTMyNSw4Ni43MTIxNDY4IDQyLjE2NjUyNzcsODcuMzcyNTQ5IDQzLjE2NjUxOTcsODcuMzcyNTQ5IEw3My4wMDAwNzk0LDg3LjM3MjU0OSBDNzQuMDAwMDcxNCw4Ny4zNzI1NDkgNzQuNjY2NjY2Nyw4Ni43MTIxNDY4IDc0LjY2NjY2NjcsODUuNzIxNDQ1MSBMNzQuNjY2NjY2Nyw1NiBMNzQuNjY2NjY2NywyNi4yNzg1NTQ5IEM3NC42NjY2NjY3LDI1LjI4Nzg1MzIgNzQuMDAwMDcxNCwyNC42Mjc0NTEgNzMuMDAwMDc5NCwyNC42Mjc0NTEgWiIgaWQ9InBhdGgtMSI+PC9wYXRoPgogICAgPC9kZWZzPgogICAgPGcgaWQ9InRyaWdnZXItc3dpdGNoIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMTAxLjMzMzI5NCw2IEwxNC42NjY3MDY0LDYgQzEwLjk5OTk1ODMsNiA4LDguOTk5OTU4MyA4LDEyLjY2NjcwNjQgTDgsOTkuMzMzMjkzNiBDOCwxMDMuMDAwMDQyIDEwLjk5OTk1ODMsMTA2IDE0LjY2NjcwNjQsMTA2IEwxMDEuMzMzMjk0LDEwNiBDMTA1LjAwMDA0MiwxMDYgMTA4LDEwMy4wMDAwNDIgMTA4LDk5LjMzMzI5MzYgTDEwOCwxMi42NjY3MDY0IEMxMDgsOC45OTk5NTgzIDEwNC45OTk4NDMsNiAxMDEuMzMzMjk0LDYgWiIgaWQ9Iui3r+W+hCIgZmlsbD0iI0FBRTZGNSIgZmlsbC1ydWxlPSJub256ZXJvIj48L3BhdGg+CiAgICAgICAgPGcgaWQ9Iui3r+W+hCIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHVzZSBmaWxsPSIjMDA5OTk5IiB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICAgICAgPHVzZSBmaWxsPSIjMDNEQURBIiB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L2c+CiAgICAgICAgPGcgaWQ9InN3aXRjaCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4wMDAwMDAsIDYuMDAwMDAwKSIgZmlsbD0iIzAwOTk5OSIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHBhdGggZD0iTTkzLjMzMzI5MzYsMCBMNi42NjY3MDYzOCwwIEMyLjk5OTk1ODMsMCAwLDIuOTk5OTU4MyAwLDYuNjY2NzA2MzggTDAsOTMuMzMzMjkzNiBDMCw5Ny4wMDAwNDE3IDIuOTk5OTU4MywxMDAgNi42NjY3MDYzOCwxMDAgTDkzLjMzMzI5MzYsMTAwIEM5Ny4wMDAwNDE3LDEwMCAxMDAsOTcuMDAwMDQxNyAxMDAsOTMuMzMzMjkzNiBMMTAwLDYuNjY2NzA2MzggQzEwMCwyLjk5OTk1ODMgOTYuOTk5ODQzMSwwIDkzLjMzMzI5MzYsMCBaIE05Ni42NjY2NDY4LDkzLjMzMzI5MzYgQzk2LjY2NjY0NjgsOTUuMTY2NjY3NyA5NS4xNjY2Njc3LDk2LjY2NjY0NjggOTMuMzMzMjkzNiw5Ni42NjY2NDY4IEw2LjY2NjcwNjM4LDk2LjY2NjY0NjggQzQuODMzMzMyMzQsOTYuNjY2NjQ2OCAzLjMzMzM1MzE5LDk1LjE2NjY2NzcgMy4zMzMzNTMxOSw5My4zMzMyOTM2IEwzLjMzMzM1MzE5LDYuNjY2NzA2MzggQzMuMzMzMzUzMTksNC44MzMzMzIzNCA0LjgzMzMzMjM0LDMuMzMzMzUzMTkgNi42NjY3MDYzOCwzLjMzMzM1MzE5IEw5My4zMzMyOTM2LDMuMzMzMzUzMTkgQzk1LjE2NjY2NzcsMy4zMzMzNTMxOSA5Ni42NjY2NDY4LDQuODMzMzMyMzQgOTYuNjY2NjQ2OCw2LjY2NjcwNjM4IEw5Ni42NjY2NDY4LDkzLjMzMzI5MzYgWiIgaWQ9IuW9oueKtiI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNjUuMDAwMDc5NCwxOC42Mjc0NTEgTDM0Ljk5OTkyMDYsMTguNjI3NDUxIEMzMy45OTk5Mjg1LDE4LjYyNzQ1MSAzMy4zMzMzMzMzLDE5LjI4Nzg1MzIgMzMuMzMzMzMzMywyMC4yNzg1NTQ5IEwzMy4zMzMzMzMzLDUwIEMzMy4zMzMzMzMzLDUwLjI5MjEzNSAzMy4zOTI3MDU0LDUwLjU1NDU2NDggMzMuNDk5OTMyNSw1MC43ODA3OTczIEwzMy40OTk5MzI1LDc5LjcyMTQ0NTEgQzMzLjQ5OTkzMjUsODAuNzEyMTQ2OCAzNC4xNjY1Mjc3LDgxLjM3MjU0OSAzNS4xNjY1MTk3LDgxLjM3MjU0OSBMNjUuMDAwMDc5NCw4MS4zNzI1NDkgQzY2LjAwMDA3MTQsODEuMzcyNTQ5IDY2LjY2NjY2NjcsODAuNzEyMTQ2OCA2Ni42NjY2NjY3LDc5LjcyMTQ0NTEgTDY2LjY2NjY2NjcsNTAgTDY2LjY2NjY2NjcsMjAuMjc4NTU0OSBDNjYuNjY2NjY2NywxOS4yODc4NTMyIDY2LjAwMDA3MTQsMTguNjI3NDUxIDY1LjAwMDA3OTQsMTguNjI3NDUxIFogTTM2LjY2NjcwNjQsMjEuOTI5ODU1NiBMNjMuMzMzNDkyMSwyMS45Mjk4NTU2IEw2My4zMzM0OTIxLDQ4LjM0ODg5NiBMMzYuNjY2NzA2NCw0OC4zNDg4OTYgTDM2LjY2NjcwNjQsMjEuOTI5ODU1NiBaIE02My4zMzM0OTIxLDc4LjA3MDM0MTEgTDM2LjgzMzMwNTUsNzguMDcwMzQxMSBMMzYuODMzMzA1NSw1MS42NTEzMDA3IEw2My4zMzM0OTIxLDUxLjY1MTMwMDcgTDYzLjMzMzQ5MjEsNzguMDcwMzQxMSBaIiBpZD0i5b2i54q2Ij48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00OS41MDk4MDM5LDI4LjQzMTM3MjUgQzQ2LjAwNDg0NSwyOC40MzEzNzI1IDQzLjEzNzI1NDksMzEuMjk4OTYyNyA0My4xMzcyNTQ5LDM0LjgwMzkyMTYgQzQzLjEzNzI1NDksMzguMzA4ODgwNSA0Ni4wMDQ4NDUsNDEuMTc2NDcwNiA0OS41MDk4MDM5LDQxLjE3NjQ3MDYgQzUzLjAxNDc2MjgsNDEuMTc2NDcwNiA1NS44ODIzNTI5LDM4LjMwODg4MDUgNTUuODgyMzUyOSwzNC44MDM5MjE2IEM1NS44ODIzNTI5LDMxLjI5ODk2MjcgNTMuMDE0NzYyOCwyOC40MzEzNzI1IDQ5LjUwOTgwMzksMjguNDMxMzcyNSBaIE00OS41MDk4MDM5LDM3Ljk5MDAwNjMgQzQ3Ljc1NzMyNDUsMzcuOTkwMDA2MyA0Ni4zMjM1Mjk0LDM2LjU1NjIxMTIgNDYuMzIzNTI5NCwzNC44MDM3MzE4IEM0Ni4zMjM1Mjk0LDMzLjA1MTI1MjMgNDcuNzU3MzI0NSwzMS42MTc0NTczIDQ5LjUwOTgwMzksMzEuNjE3NDU3MyBDNTEuMjYyMjgzNCwzMS42MTc0NTczIDUyLjY5NjA3ODQsMzMuMDUxMjUyMyA1Mi42OTYwNzg0LDM0LjgwMzczMTggQzUyLjY5NjA3ODQsMzYuNTU2MjExMiA1MS4yNjIyODM0LDM3Ljk5MDAwNjMgNDkuNTA5ODAzOSwzNy45OTAwMDYzIFoiIGlkPSLlvaLnirYiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTUwLjQ5MDE5NjEsNzEuNTY4NjI3NSBDNTEuMzcyNTg0MSw3MS41Njg2Mjc1IDUxLjk2MDc4NDMsNzAuOTMxNDM5IDUxLjk2MDc4NDMsNjkuOTc1NTYxNCBMNTEuOTYwNzg0Myw2MC40MTY1OTU1IEM1MS45NjA3ODQzLDU5LjQ2MDcxNzkgNTEuMzcyNTg0MSw1OC44MjM1Mjk0IDUwLjQ5MDE5NjEsNTguODIzNTI5NCBDNDkuNjA3ODA4MSw1OC44MjM1Mjk0IDQ5LjAxOTYwNzgsNTkuNDYwNzE3OSA0OS4wMTk2MDc4LDYwLjQxNjU5NTUgTDQ5LjAxOTYwNzgsNjkuOTc1NTYxNCBDNDkuMDE5NjA3OCw3MC45MzE0MzkgNDkuNjA3ODA4MSw3MS41Njg2Mjc1IDUwLjQ5MDE5NjEsNzEuNTY4NjI3NSBaIiBpZD0i6Lev5b6EIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMC4yOTQxMTc2LDYuODYyNzQ1MSBDOC40MDY4MzIwOCw2Ljg2Mjc0NTEgNi44NjI3NDUxLDguNDA2ODMyMDggNi44NjI3NDUxLDEwLjI5NDExNzYgQzYuODYyNzQ1MSwxMi4xODE0MDMyIDguNDA2ODMyMDgsMTMuNzI1NDkwMiAxMC4yOTQxMTc2LDEzLjcyNTQ5MDIgQzEyLjE4MTQwMzIsMTMuNzI1NDkwMiAxMy43MjU0OTAyLDEyLjE4MTQwMzIgMTMuNzI1NDkwMiwxMC4yOTQxMTc2IEMxMy43MjU0OTAyLDguNDA2ODMyMDggMTIuMTgxMTk4OCw2Ljg2Mjc0NTEgMTAuMjk0MTE3Niw2Ljg2Mjc0NTEgWiIgaWQ9Iui3r+W+hCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNMTAuMjk0MTE3Niw4Ni4yNzQ1MDk4IEM4LjQwNjgzMjA4LDg2LjI3NDUwOTggNi44NjI3NDUxLDg3LjgxODU5NjggNi44NjI3NDUxLDg5LjcwNTg4MjQgQzYuODYyNzQ1MSw5MS41OTMxNjc5IDguNDA2ODMyMDgsOTMuMTM3MjU0OSAxMC4yOTQxMTc2LDkzLjEzNzI1NDkgQzEyLjE4MTQwMzIsOTMuMTM3MjU0OSAxMy43MjU0OTAyLDkxLjU5MzE2NzkgMTMuNzI1NDkwMiw4OS43MDU4ODI0IEMxMy43MjU0OTAyLDg3LjgxODU5NjggMTIuMTgxMTk4OCw4Ni4yNzQ1MDk4IDEwLjI5NDExNzYsODYuMjc0NTA5OCBaIiBpZD0i6Lev5b6EIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04OS43MDU4ODI0LDYuODYyNzQ1MSBDODcuODE4NTk2OCw2Ljg2Mjc0NTEgODYuMjc0NTA5OCw4LjQwNjgzMjA4IDg2LjI3NDUwOTgsMTAuMjk0MTE3NiBDODYuMjc0NTA5OCwxMi4xODE0MDMyIDg3LjgxODU5NjgsMTMuNzI1NDkwMiA4OS43MDU4ODI0LDEzLjcyNTQ5MDIgQzkxLjU5MzE2NzksMTMuNzI1NDkwMiA5My4xMzcyNTQ5LDEyLjE4MTQwMzIgOTMuMTM3MjU0OSwxMC4yOTQxMTc2IEM5My4xMzcyNTQ5LDguNDA2ODMyMDggOTEuNTkzMTY3OSw2Ljg2Mjc0NTEgODkuNzA1ODgyNCw2Ljg2Mjc0NTEgWiIgaWQ9Iui3r+W+hCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNODkuNzA1ODgyNCw4Ni4yNzQ1MDk4IEM4Ny44MTg1OTY4LDg2LjI3NDUwOTggODYuMjc0NTA5OCw4Ny44MTg1OTY4IDg2LjI3NDUwOTgsODkuNzA1ODgyNCBDODYuMjc0NTA5OCw5MS41OTMxNjc5IDg3LjgxODU5NjgsOTMuMTM3MjU0OSA4OS43MDU4ODI0LDkzLjEzNzI1NDkgQzkxLjU5MzE2NzksOTMuMTM3MjU0OSA5My4xMzcyNTQ5LDkxLjU5MzE2NzkgOTMuMTM3MjU0OSw4OS43MDU4ODI0IEM5My4xMzcyNTQ5LDg3LjgxODU5NjggOTEuNTkzMTY3OSw4Ni4yNzQ1MDk4IDg5LjcwNTg4MjQsODYuMjc0NTA5OCBaIiBpZD0i6Lev5b6EIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=</cm:Content>
+        </cm:Resource>
+
+    </cm:FunctionBlock>
+
+</cm:CIMI>
